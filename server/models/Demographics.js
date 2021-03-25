@@ -6,4 +6,9 @@ const bcrypt = require('bcrypt');
 //last name
 //phone number
 
-
+const demograpnics = new Schema({
+	firstName: {},
+	lastName: {},
+	phoneNumber: {},
+	email: {}
+});
