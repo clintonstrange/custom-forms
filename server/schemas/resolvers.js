@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Demographics, Screening } = require('../models');
+const { User, Proctor, Screening } = require('../models');
 const { signToken } = require('../utils/auth');
 
 //this file will be the engine for being able to add things like symptoms to the data base if you are an authenticated user (admin user)
@@ -32,6 +32,7 @@ const resolvers = {
 	},
 
 	Mutation: {
+		// this is for the signup
 		addUser: async (parent, args) => {
 			const user = await User.create(args);
 			const token = signToken(user);
@@ -71,6 +72,23 @@ const resolvers = {
 
 			throw new AuthenticationError('You need to be logged in!');
 		}
+
+		// ! can we re-purpose this for adding a user based on a specific role?
+		/* addFriend: async (parent, { friendId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { friends: friendId } },
+          { new: true }
+        ).populate('friends');
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    } */
+
+		// TODO: need to add a submitForm mutation
 	}
 };
 
