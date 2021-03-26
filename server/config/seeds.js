@@ -12,14 +12,14 @@ db.once("open", async () => {
   });
 
   await User.create({
-    username: "lefty",
+    username: "phil",
     email: "lefty@pga.com",
     password: "password12345",
     role: "Manager",
   });
 
   await User.create({
-    username: "spieth",
+    username: "jordan",
     email: "spieth@pga.com",
     password: "password12345",
     role: "admin",

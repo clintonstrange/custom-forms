@@ -5,7 +5,7 @@ import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 
 function Signup(props) {
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [formState, setFormState] = useState({ email: "", username: "", role: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
@@ -14,7 +14,8 @@ function Signup(props) {
       variables: {
         email: formState.email,
         password: formState.password,
-        userame: formState.userame,
+        role: formState.role,
+        username: formState.username,
       },
     });
     const token = mutationResponse.data.addUser.token;
@@ -35,23 +36,13 @@ function Signup(props) {
 
       <h2>Create Account</h2>
       <form onSubmit={handleFormSubmit}>
-        {/* <div className="flex-row space-between my-2">
-          <label htmlFor="firstName">First Name:</label>
-          <input
-            placeholder="First"
-            name="firstName"
-            type="firstName"
-            id="firstName"
-            onChange={handleChange}
-          />
-        </div> */}
         <div className="flex-row space-between my-2">
           <label htmlFor="username">Username:</label>
           <input
             placeholder="Username"
-            name="userame"
-            type="userame"
-            id="userame"
+            name="username"
+            type="username"
+            id="username"
             onChange={handleChange}
           />
         </div>
@@ -64,6 +55,14 @@ function Signup(props) {
             id="email"
             onChange={handleChange}
           />
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="role">Role:</label>
+          <select name="role" type="role" id="role" onChange={handleChange}>
+            <option value="admin">Admin</option>
+            <option value="manager">Manager</option>
+            <option value="director">Director</option>
+          </select>
         </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="pwd">Password:</label>
