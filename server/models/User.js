@@ -24,8 +24,12 @@ const userSchema = new Schema(
 		//TODO: seed the users (three)
 		//TODO: users = admin (add to db), basic (form input), read-only(data view)
 		role: {
-			type: String
-		}
+			type: String,
+			default: 'Admin',
+			validate: {
+				isIn: [['Admin', 'Basic', 'Read-Only']]
+			},
+		},
 	},
 	{
 		toJSON: {
