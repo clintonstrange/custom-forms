@@ -1,37 +1,45 @@
 import React, { useState } from "react";
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from "@apollo/react-hooks";
 import { Link } from "react-router-dom";
-import { LOGIN } from "../utils/mutations"
+import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 function Login(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' })
+  const [formState, setFormState] = useState({
+    email: "",
+    password: "",
+    role: "",
+  });
   const [login, { error }] = useMutation(LOGIN);
 
-  const handleFormSubmit = async event => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const mutationResponse = await login({ variables: { email: formState.email, password: formState.password } })
+      const mutationResponse = await login({
+        variables: {
+          email: formState.email,
+          password: formState.password,
+          role: formState.role,
+        },
+      });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   };
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
       ...formState,
-      [name]: value
+      [name]: value,
     });
   };
 
   return (
     <div className="container my-1">
-      <Link to="/signup">
-        ← Create Account
-      </Link>
+      <Link to="/signup">← Create Account</Link>
 
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
@@ -55,20 +63,17 @@ function Login(props) {
             onChange={handleChange}
           />
         </div>
-        {
-          error ? <div>
-            <p className="error-text" >The provided credentials are incorrect</p>
-          </div> : null
-        }
+        {error ? (
+          <div>
+            <p className="error-text">The provided credentials are incorrect</p>
+          </div>
+        ) : null}
         <div className="flex-row flex-end">
-          <button type="submit">
-            Submit
-          </button>
+          <button type="submit">Submit</button>
         </div>
       </form>
     </div>
   );
 }
-
 
 export default Login;

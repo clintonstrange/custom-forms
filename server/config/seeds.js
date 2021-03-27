@@ -8,14 +8,14 @@ db.once("open", async () => {
     username: "tigerwoods",
     email: "goat@pga.com",
     password: "password12345",
-    role: "Director",
+    role: "director",
   });
 
   await User.create({
     username: "phil",
     email: "lefty@pga.com",
     password: "password12345",
-    role: "Manager",
+    role: "manager",
   });
 
   await User.create({
