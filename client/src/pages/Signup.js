@@ -31,7 +31,7 @@ function Signup(props) {
       email: user.email,
     });
     console.log(formState);
-    //Auth.login(token);
+    Auth.login(token);
   };
 
   const handleChange = (event) => {
