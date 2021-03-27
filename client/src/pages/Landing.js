@@ -32,6 +32,7 @@ const Form = () => {
           {state.role.admin}
           <p>This is an Admin</p>
         </div>
+        // can add symptoms to a form
       }
       {state.role.manager &&
         <div>
@@ -44,31 +45,8 @@ const Form = () => {
           {state.role.director}
           <p>This is a Director</p>
         </div>
+        // director can see the data but only has read privileges
       }
-      {/* //    <div>
-                {state.role.admin ? (
-          //         <div>
-          //             <p>This is an Admin</p>
-          //         </div>
-
-          //     ) : (
-          //         <div>
-          //         {state.role.manager ? (
-          //         <div>
-          //             <p>This is an Manager</p>
-          //         </div>
-          //     )}) : (
-          //         <div>
-          //         {state.role.director ? (
-          //         <div>
-          //             <p>This is an Director</p>
-          //         </div>
-          //     ) : (
-          //       <span>(log in to access your forms!)</span>
-          //     )}
-          //   </div>
-          // </div> */}
-
       <h3>
         <span role="img" aria-label="warning">
           ⚠️
@@ -79,4 +57,4 @@ const Form = () => {
   );
 };
 
-export default Form
+export default Form;
