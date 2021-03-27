@@ -6,6 +6,7 @@ import Auth from "../utils/auth";
 
 function Login(props) {
   const [formState, setFormState] = useState({
+    username: "",
     email: "",
     password: "",
     role: "",
@@ -19,10 +20,18 @@ function Login(props) {
         variables: {
           email: formState.email,
           password: formState.password,
-          role: formState.role,
         },
       });
       const token = mutationResponse.data.login.token;
+      const user = mutationResponse.data.login.user;
+      console.log(mutationResponse.data.login.user);
+      setFormState({
+        ...formState,
+        username: user.username,
+        role: user.role,
+        email: user.email,
+      });
+      console.log(formState);
       Auth.login(token);
     } catch (e) {
       console.log(e);

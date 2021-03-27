@@ -9,7 +9,6 @@ function Signup(props) {
     email: "",
     username: "",
     role: "Admin",
-    password: "",
   });
   const [addUser] = useMutation(ADD_USER);
 
@@ -24,7 +23,15 @@ function Signup(props) {
       },
     });
     const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+    const user = mutationResponse.data.addUser.user;
+    setFormState({
+      ...formState,
+      username: user.username,
+      role: user.role,
+      email: user.email,
+    });
+    console.log(formState);
+    //Auth.login(token);
   };
 
   const handleChange = (event) => {
