@@ -21,6 +21,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, role: String!, password: String!): Auth
+    submitForm(formId: ID!, form: String!): Screening
   }
 `;
 // TODO ^^ we need to build out the submitForm() mutation

@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Proctor, Screening } = require("../models");
 const { signToken } = require("../utils/auth");
 
 //this file will be the engine for being able to add things like symptoms to the data base if you are an authenticated user (admin user)
@@ -49,21 +49,22 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-
-    // addFriend: async (parent, { friendId }, context) => {
-    //   if (context.user) {
-    //     const updatedUser = await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $addToSet: { friends: friendId } },
-    //       { new: true }
-    //     ).populate('friends');
-
-    //     return updatedUser;
-    //   }
-
-    //   throw new AuthenticationError('You need to be logged in!');
-    // }
-  },
+    submitForm: async (parent, args, context) => {
+      if (context.user) {
+        const form = await Screening.create({ ...args, username: context.user.username });
+    
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { screenings: form._id } },
+          { new: true }
+        );
+    
+        return form;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
+    }
+  }
 };
 
 module.exports = resolvers;
