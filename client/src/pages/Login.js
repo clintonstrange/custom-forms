@@ -1,22 +1,16 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
-//import { useStoreContext } from "../utils/GlobalState";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations";
-import { UPDATE_USER } from "../utils/actions";
 import Auth from "../utils/auth";
 
 function Login(props) {
-  //const [state, dispatch] = useStoreContext();
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state);
   const [formState, setFormState] = useState({
     email: "",
     password: "",
   });
-  console.log(formState);
   const [login, { error }] = useMutation(LOGIN);
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -28,17 +22,6 @@ function Login(props) {
         },
       });
       const token = mutationResponse.data.login.token;
-      const user = mutationResponse.data.login.user;
-      console.log(mutationResponse.data);
-      if (user) {
-        dispatch({
-          type: UPDATE_USER,
-          role: user.role,
-          username: user.username,
-          email: user.email,
-        });
-      }
-      console.log(state);
       Auth.login(token);
     } catch (e) {
       console.log(e);
@@ -47,8 +30,6 @@ function Login(props) {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name, "NAME");
-    console.log(value, "VALUE");
     setFormState({
       ...formState,
       [name]: value,

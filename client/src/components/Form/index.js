@@ -1,33 +1,26 @@
 import React from "react";
-// import { useStoreContext } from "../../utils/GlobalState";
 import Auth from "../../utils/auth";
+import { useQuery } from "@apollo/react-hooks";
+import { QUERY_ME } from "../../utils/queries";
 // import { idbPromise } from "../utils/helpers"
-import { useSelector } from "react-redux";
 
 const Form = () => {
-  //const [state] = useStoreContext();
-  const state = useSelector((state) => state);
-  const { role } = state;
+  const loggedIn = Auth.loggedIn();
+  const { data: userData } = useQuery(QUERY_ME);
 
-  //   useEffect(() => {
-  //     async function getForms() {
-  //       const cart = await idbPromise('forms', 'get');
-  //       dispatch({ type: ADD_FORMS, forms: [...forms] });
-  //     };
-
-  //     if (!state.cart.length) {
-  //       getCart();
-  //     }
-  //   }, [state.cart.length, dispatch]);
-
-  console.log(state);
   return (
     <div className="container">
-      {Auth.loggedIn() ? (
+      {loggedIn && userData ? (
         <div>
           <h2>Your Forms</h2>
           <p>
-            Welcome <span>{role}</span>
+            Welcome <span>{userData.me.username}</span>
+          </p>
+          <p>
+            You are a <span>{userData.me.role}</span>
+          </p>
+          <p>
+            Email: <span>{userData.me.email}</span>
           </p>
         </div>
       ) : (
