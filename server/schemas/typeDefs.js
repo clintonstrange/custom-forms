@@ -1,25 +1,28 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-
-type User {
+  type User {
     _id: ID
     username: String
+    role: String
     email: String
-    symptoms: [Symptom]
   }
 
-type Auth {
+  type Auth {
     token: ID!
     user: User
   }
 
-type Mutation {
-    login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
-    addSymptom(symptomText: String!): Symptom
+  type Query {
+    user: User
+    users: [User]
+  }
 
+  type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, role: String!, password: String!): Auth
   }
 `;
+// TODO ^^ we need to build out the submitForm() mutation
 
 module.exports = typeDefs;
