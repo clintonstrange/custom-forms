@@ -1,8 +1,7 @@
 const { Schema, model, isValidObjectId } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-
-const proctorSchema = new Schema(
+const controlSchema = new Schema(
 	{
 		// this would be the name of the individual proctoring the screen
 		documentor: {
@@ -27,10 +26,18 @@ const proctorSchema = new Schema(
 			required: true,
 			trim: true
 		},
-		// JAKE--- I moved the dateTime and createdAt to the Screening Model. If we treat the Proctor 
-		// like a User and the Screening Model like a comment/post it would make sense in my mind to 
-		// attach it to the Screening Model i.e. the screening session. Then, the User Model would be 
-		// just for the hospital/clinic/etc. Let's figure this out tomorrow.
+		dateTime: {
+			type: Number,
+			required: true,
+			trim: true
+		},
+		// this should be a timestamp field when the screen took place - this should be automatically generated
+		createdAt:{
+			type: Date,
+			default: Date.now,
+			get: timestamp => dateFormat(timestamp)
+		}
+		
 	},
 	{
 		toJSON: {
@@ -40,10 +47,10 @@ const proctorSchema = new Schema(
 	}
 );
 
-proctorSchema.virtual('screenNumCount').get(function() {
+controlSchema.virtual('screenNumCount').get(function () {
 	return this.screenNum.length;
 });
 
-const Proctor = model('Proctor', proctorSchema);
+const Control = model('Control', controlSchema);
 
-module.exports = Proctor;
+module.exports = Control;

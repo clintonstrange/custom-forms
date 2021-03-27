@@ -7,11 +7,12 @@ const dateFormat = require('../utils/dateFormat');
 
 const covidScreeningSchema = new Schema(
 	{
-		proctor: {
-			type: String,
-			required: true,
-			trim: true
-		},
+		control: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Control'
+			}
+		],
 		symptoms: {
 			type: String,
 			required: true,
@@ -28,17 +29,6 @@ const covidScreeningSchema = new Schema(
 		travel: {
 			type: String,
 			required: true
-		},
-		dateTime: {
-			type: Number,
-			required: true,
-			trim: true
-		},
-		// this should be a timestamp field when the screen took place - this should be automatically generated
-		createdAt:{
-			type: Date,
-			default: Date.now,
-			get: timestamp => dateFormat(timestamp)
 		}
 	},
 	{
