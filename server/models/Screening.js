@@ -1,17 +1,45 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const dateFormat = require('../utils/dateFormat');
+
 
 //this file will be used for building the schema for the screening componenets
 
-const covidScreeningForm = new Schema({
-	proctor: [
-		{
-			type: Schema.Types.ObjectId,
-			ref: 'Proctor'
+const covidScreeningSchema = new Schema(
+	{
+		control: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Control'
+			}
+		],
+		symptoms: {
+			type: String,
+			required: true,
+			maxlength: 280
+		},
+		contact: {
+			type: Boolean,
+			required: true
+		},
+		positiveTest: {
+			type: Boolean,
+			required: true
+		},
+		travel: {
+			type: String,
+			required: true
 		}
-	],
-	symptoms: {},
-	contact: {},
-	positiveTest: {},
-	travel: {}
-});
+	},
+	{
+		toJSON: {
+			virtuals: true,
+			getters: true
+		},
+		id: false
+	}
+);
+
+const Screening = model('Screening', covidScreeningSchema);
+
+module.exports = Screening;
