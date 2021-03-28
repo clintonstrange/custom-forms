@@ -19,11 +19,11 @@ const covidScreeningSchema = new Schema(
 			maxlength: 280
 		},
 		contact: {
-			type: Boolean,
+			type: String,
 			required: true
 		},
 		positiveTest: {
-			type: Boolean,
+			type: String,
 			required: true
 		},
 		travel: {
@@ -40,6 +40,6 @@ const covidScreeningSchema = new Schema(
 	}
 );
 
-const Screening = model('Screening', covidScreeningSchema);
+const Screenings = model('Screenings', covidScreeningSchema);
 
-module.exports = Screening;
+module.exports = Screenings;

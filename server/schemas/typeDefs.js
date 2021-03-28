@@ -17,13 +17,14 @@ const typeDefs = gql`
     user: User
     users: [User]
     me: User
+    screenings: [Screenings]
   }
 
-  type Screening {
+  type Screenings {
     _id: ID
     symptoms: String
-    contact: Boolean
-    positiveTest: Boolean
+    contact: String
+    positiveTest: String
     travel: String
   }
 
@@ -35,7 +36,13 @@ const typeDefs = gql`
       role: String!
       password: String!
     ): Auth
-    submitForm(formId: ID!, form: String!): Screening
+    addScreening(
+      symptoms: String!
+      contact: String!
+      positiveTest: String!
+      travel: String!
+    ): Screenings
+    submitForm(formId: ID!, form: String!): Screenings
   }
 `;
 
