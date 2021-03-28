@@ -52,30 +52,6 @@ const Form = () => {
           </div>
         </div>
       ) : (
-        //       <div>
-        //         {state.role.admin ? (
-        //         <div>
-        //             <p>This is an Admin</p>
-        //         </div>
-
-        //     ) : (
-        //         <div>
-        //         {state.role.manager ? (
-        //         <div>
-        //             <p>This is an Manager</p>
-        //         </div>
-        //     )}) : (
-        //         <div>
-        //         {state.role.director ? (
-        //         <div>
-        //             <p>This is an Director</p>
-        //         </div>
-        //     ) : (
-        //       <span>(log in to access your forms!)</span>
-        //     )}
-        //   </div>
-        // </div>
-
         <h3>
           <span role="img" aria-label=""></span>
           Please Login to Access your Forms!
