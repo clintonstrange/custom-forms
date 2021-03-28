@@ -20,13 +20,20 @@ const Landing = () => {
             Authorization: <span>{userData.me.role.toUpperCase()}</span>
           </p>
           <div>
-            {userData.me.role === "readOnly" ? (
+            {userData.me.role === "admin" ? (
               <div>
-                <p>This authorization can only read data!</p>
+                <Form />
+              </div>
+            ) : userData.me.role === "read/write" ? (
+              <div>
+                <Form />
               </div>
             ) : (
               <div>
-                <Form />
+                <p>
+                  if logged in and user does not have admin or read/write
+                  access, default to read only access
+                </p>
               </div>
             )}
           </div>
