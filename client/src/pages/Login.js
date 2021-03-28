@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
-import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
 
@@ -68,9 +67,6 @@ function Login(props) {
         ) : null}
         <div className="flex-row flex-end">
           <button type="submit">Submit</button>
-          <button type="create" href="/signup">
-            Create account
-          </button>
         </div>
       </form>
     </div>
