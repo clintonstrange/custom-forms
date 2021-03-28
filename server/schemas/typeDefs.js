@@ -13,12 +13,18 @@ const typeDefs = gql`
 		user: User
 	}
 
+	type Screening {
+		_id: ID
+		symptoms: String
+		contact: Boolean
+		positiveTest: Boolean
+		travel: String
+	}
 
 	type Query {
 		user: User
 		users: [User]
 	}
-
 
 	type Mutation {
 		login(email: String!, password: String!): Auth
