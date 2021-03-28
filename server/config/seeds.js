@@ -8,21 +8,21 @@ db.once("open", async () => {
     username: "tigerwoods",
     email: "goat@pga.com",
     password: "password12345",
-    role: "director",
+    role: "admin",
   });
 
   await User.create({
     username: "phil",
     email: "lefty@pga.com",
     password: "password12345",
-    role: "manager",
+    role: "read/write",
   });
 
   await User.create({
     username: "jordan",
     email: "spieth@pga.com",
     password: "password12345",
-    role: "admin",
+    role: "read-only",
   });
 
   console.log("users seeded");
