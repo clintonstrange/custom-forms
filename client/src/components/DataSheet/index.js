@@ -14,6 +14,19 @@ function DisplayData() {
     // })
 
     return (
-        
+        <div>
+            <h2>Here are the different form you've completed:</h2>
+            {forms.map(item => {
+                const container = {};
+
+                container._id = item._id;
+                container.symptoms = item.symptoms;
+                container.contact = item.contact;
+                container.positiveTest = item.positiveTest;
+                container.travel = item.travel;
+
+                return container;
+            })}
+        </div>
     );
 }
