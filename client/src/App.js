@@ -10,16 +10,17 @@ import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import Signup from "./pages/Signup";
 
+
 const client = new ApolloClient({
-  request: (operation) => {
-    const token = localStorage.getItem("id_token");
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : "",
-      },
-    });
-  },
-  uri: "/graphql",
+	request: operation => {
+		const token = localStorage.getItem('id_token');
+		operation.setContext({
+			headers: {
+				authorization: token ? `Bearer ${token}` : ''
+			}
+		});
+	},
+	uri: '/graphql'
 });
 
 function App() {

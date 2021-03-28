@@ -1,6 +1,6 @@
-const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
-const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Proctor, Screening } = require('../models');
+const { signToken } = require('../utils/auth');
 
 //this file will be the engine for being able to add things like symptoms to the data base if you are an authenticated user (admin user)
 
@@ -24,44 +24,49 @@ const resolvers = {
     },
   },
 
-  Mutation: {
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
-      const token = signToken(user);
+	Mutation: {
+		addUser: async (parent, args) => {
+			const user = await User.create(args);
+			const token = signToken(user);
 
-      return { token, user };
-    },
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+			return { token, user };
+		},
+		login: async (parent, { email, password }) => {
+			const user = await User.findOne({ email });
 
-      if (!user) {
-        throw new AuthenticationError("Incorrect credentials");
-      }
+			if (!user) {
+				throw new AuthenticationError('Incorrect credentials');
+			}
 
-      const correctPw = await user.isCorrectPassword(password);
+			const correctPw = await user.isCorrectPassword(password);
 
-      if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
-      }
+			if (!correctPw) {
+				throw new AuthenticationError('Incorrect credentials');
+			}
 
-      const token = signToken(user);
-      return { token, user };
-    },
+			const token = signToken(user);
+			return { token, user };
+		},
+		submitForm: async (parent, args, context) => {
+			if (context.user) {
+				const form = await Screening.create({
+					...args,
+					username: context.user.username
+				});
 
-    // addFriend: async (parent, { friendId }, context) => {
-    //   if (context.user) {
-    //     const updatedUser = await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $addToSet: { friends: friendId } },
-    //       { new: true }
-    //     ).populate('friends');
+				await User.findByIdAndUpdate(
+					{ _id: context.user._id },
+					{ $push: { screenings: form._id } },
+					{ new: true }
+				);
 
-    //     return updatedUser;
-    //   }
+				return form;
+			}
 
-    //   throw new AuthenticationError('You need to be logged in!');
-    // }
-  },
+			throw new AuthenticationError('You need to be logged in!');
+		}
+		// TODO: build out a 'viewData' mutation when the time is right
+	}
 };
 
 module.exports = resolvers;
