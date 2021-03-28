@@ -31,19 +31,45 @@ const Form = () => {
         <div>
           {state.role.admin}
           <p>This is an Admin</p>
+        </div>,
+        <div className="container">
+          <div className="btn">
+            <h1>Fill Out Form</h1>
+          </div>
+          {/* need to build out the functional logic for onClick */}
+          <div>
+            <h1>Add User</h1>
+          </div>
+          <div>
+            <h1>View Data</h1>
+          </div>
         </div>
-        // can add symptoms to a form
       }
       {state.role.manager &&
         <div>
           {state.role.manager}
           <p>This is a Manager</p>
+        </div>,
+        <div className="container">
+          <div className="btn">
+            <h1>Fill Out Form</h1>
+          </div>
+          {/* need to build out the functional logic for onClick */}
+          <div>
+            <h1>View Data</h1>
+          </div>
         </div>
       }
       {
         <div>
           {state.role.director}
           <p>This is a Director</p>
+        </div>,
+        <div className="container">
+          {/* need to build out the functional logic for onClick */}
+          <div>
+            <h1>View Data</h1>
+          </div>
         </div>
         // director can see the data but only has read privileges
       }
