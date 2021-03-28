@@ -6,18 +6,35 @@
 	margin: auto;
 }
 
-/* style for buttons that are located next to one another */
-.action-btn {
+/* adding className of margin will give the element a right margin of [] px */
+.margin-right {
 	margin-right: 10px;
+}
+/* adding className of margin will give the element a right margin of [] px */
+.margin-left {
+	margin-left: 10px;
+}
+
+.login-btn {
+	width: 75%;
+	margin: auto;
+}
+
+.btn {
+	border-radius: 30px !important;
 }
 
 /* MEDIA QUERIES */
 @media only screen and (max-width: 992px) {
-	#custom-card {
-		width: auto;
+	#card-custom {
+		width: 60%;
 		margin: auto;
 	}
 }
 
 @media only screen and (max-width: 600px) {
+	#card-custom {
+		width: 80%;
+		margin: auto;
+	}
 }
