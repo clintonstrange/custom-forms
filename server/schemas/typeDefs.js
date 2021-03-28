@@ -20,22 +20,23 @@ const typeDefs = gql`
   }
 
   type Screening {
-		_id: ID
-		symptoms: String
-		contact: Boolean
-		positiveTest: Boolean
-		travel: String
-	}
+    _id: ID
+    symptoms: String
+    contact: Boolean
+    positiveTest: Boolean
+    travel: String
+  }
 
   type Mutation {
-		login(email: String!, password: String!): Auth
-		addUser(
-			username: String!
-			email: String!
-			role: String!
-			password: String!
-		): Auth
-		submitForm(formId: ID!, form: String!): Screening
+    login(email: String!, password: String!): Auth
+    addUser(
+      username: String!
+      email: String!
+      role: String!
+      password: String!
+    ): Auth
+    submitForm(formId: ID!, form: String!): Screening
+  }
 `;
 // TODO ^^ we need to build out the submitForm() mutation
 

@@ -21,9 +21,6 @@ function Nav() {
           <li className="mx-1">
             <Link to="/login">Login</Link>
           </li>
-          <li className="mx-1">
-            <Link to="/signup">Create Account</Link>
-          </li>
         </ul>
       );
     }
@@ -32,12 +29,7 @@ function Nav() {
   return (
     <header className="flex-row px-1">
       <h1>
-        <Link to="/">
-          <span role="img" aria-label="polish flag">
-            🇵🇱
-          </span>
-          Whatever Works 2.0
-        </Link>
+        <Link to="/">Whatever Works 2.0</Link>
       </h1>
 
       <nav>{showNavigation()}</nav>
