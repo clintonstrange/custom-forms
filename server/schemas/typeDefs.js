@@ -20,6 +20,7 @@ const typeDefs = gql`
 		positiveTest: Boolean
 		travel: String
 	}
+  
   type Query {
     user: User
     users: [User]

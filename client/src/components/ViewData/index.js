@@ -3,7 +3,7 @@ import { useStoreContext } from '../../utils/GlobalState';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ME } from '../../utils/queries';
 
-function DisplayData() {
+function ViewData() {
     const [state, dispatch] = useStoreContext();
     const { forms } = state;
 
@@ -30,3 +30,5 @@ function DisplayData() {
         </div>
     );
 }
+
+export default ViewData;
