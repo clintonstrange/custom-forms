@@ -40,6 +40,6 @@ const covidScreeningSchema = new Schema(
 	}
 );
 
-const Screening = model('Screening', covidScreeningSchema);
+const Form = model("Form", covidScreeningSchema);
 
-module.exports = Screening;
+module.exports = Form;

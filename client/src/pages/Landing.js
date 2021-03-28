@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import Auth from "../utils/auth";
+import { Link } from "react-router-dom";
 // import { idbPromise } from "../utils/helpers"
 
-const Form = () => {
+const Landing = () => {
   const [state, dispatch] = useStoreContext();
 
 
@@ -18,6 +19,7 @@ const Form = () => {
   //     }
   //   }, [state.cart.length, dispatch]);
 
+
   console.log(state);
   return (
     <div className="container">
@@ -31,17 +33,16 @@ const Form = () => {
         <div>
           {state.role.admin}
           <p>This is an Admin</p>
-        </div>,
-        <div className="container">
-          <div className="btn">
-            <h1>Fill Out Form</h1>
-          </div>
-          {/* need to build out the functional logic for onClick */}
-          <div>
-            <h1>Add User</h1>
-          </div>
-          <div>
-            <h1>View Data</h1>
+          <div className="container">
+            <div className="btn">
+              <h1><Link to="/Form">Fill Out Form</Link></h1>
+            </div>
+            <div>
+              <h1><Link to="/Signup">Add User</Link></h1>
+            </div>
+            <div>
+              <h1><Link to="/DataSheet">View Data</Link></h1>
+            </div>
           </div>
         </div>
       }
@@ -49,29 +50,29 @@ const Form = () => {
         <div>
           {state.role.manager}
           <p>This is a Manager</p>
-        </div>,
-        <div className="container">
-          <div className="btn">
-            <h1>Fill Out Form</h1>
-          </div>
-          {/* need to build out the functional logic for onClick */}
-          <div>
-            <h1>View Data</h1>
+          <div className="container">
+            <div className="btn">
+              <h1>Fill Out Form</h1>
+            </div>
+            {/* need to build out the functional logic for onClick */}
+            <div>
+              <h1>View Data</h1>
+            </div>
           </div>
         </div>
       }
-      {
+      {state.role.director &&
         <div>
           {state.role.director}
           <p>This is a Director</p>
-        </div>,
-        <div className="container">
-          {/* need to build out the functional logic for onClick */}
-          <div>
-            <h1>View Data</h1>
+          <div className="container">
+            {/* need to build out the functional logic for onClick */}
+            <div>
+              <h1>View Data</h1>
+            </div>
           </div>
+          {/* // director can see the data but only has read privileges */}
         </div>
-        // director can see the data but only has read privileges
       }
       <h3>
         <span role="img" aria-label="warning">
@@ -83,4 +84,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default Landing;

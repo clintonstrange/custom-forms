@@ -20,10 +20,12 @@ function Login(props) {
           email: formState.email,
           password: formState.password,
           role: formState.role,
-        },
-      });
+        }
+      })
       const token = mutationResponse.data.login.token;
       Auth.login(token);
+      console.log(mutationResponse);
+      console.log(token);
     } catch (e) {
       console.log(e);
     }
@@ -35,6 +37,7 @@ function Login(props) {
       ...formState,
       [name]: value,
     });
+    console.log(formState);
   };
 
   return (
