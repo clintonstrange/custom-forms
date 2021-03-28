@@ -37,3 +37,19 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_SCREENING = gql`
+  mutation addScreening(
+    $symptoms: String!
+    $contact: String!
+    $positiveTest: String!
+    $travel: String!
+  ) {
+    Screenings(
+      symptoms: $symptoms
+      contact: $contact
+      positiveTest: $positiveTest
+      travel: $travel
+    )
+  }
+`;

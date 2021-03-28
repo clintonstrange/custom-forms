@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
+const { User, Screenings } = require("../models");
 const { signToken } = require("../utils/auth");
 
 //this file will be the engine for being able to add things like symptoms to the data base if you are an authenticated user (admin user)
@@ -21,6 +21,9 @@ const resolvers = {
     },
     user: async (parent, { username }) => {
       return User.findOne({ username }).select("-__v -password");
+    },
+    screenings: async () => {
+      return await Screenings.find();
     },
   },
 
@@ -46,6 +49,11 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
+    },
+
+    addScreening: async (parent, args) => {
+      const screenings = await Screenings.create(args);
+      return screenings;
     },
 
     // addFriend: async (parent, { friendId }, context) => {
