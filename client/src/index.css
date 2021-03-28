@@ -1,0 +1,18 @@
+/* custom css for desktops */
+
+/* customize the card for the login screen */
+#card-custom {
+	width: 60%;
+	margin: auto;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 992px) {
+	#custom-card {
+		width: auto;
+		margin: auto;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+}
