@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { StoreProvider } from "./utils/GlobalState";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
-
+import 'materialize-css/dist/css/materialize.min.css'
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
