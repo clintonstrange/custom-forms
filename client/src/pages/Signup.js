@@ -37,7 +37,7 @@ function Signup(props) {
 
   return (
     <div className="container my-1">
-      <Link to="/login">← Go to Login</Link>
+      <Link to="/">← Go to Homepage</Link>
 
       <h2>Create Account</h2>
       <form onSubmit={handleFormSubmit}>
@@ -61,12 +61,18 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="role">Role:</label>
-          <select name="role" type="role" id="role" onChange={handleChange}>
+        <div>
+          <label htmlFor="role">Select User Authorizaion</label>
+          <select
+            className="browser-default"
+            name="role"
+            type="role"
+            id="role"
+            onChange={handleChange}
+          >
             <option value="admin">Admin</option>
-            <option value="manager">Manager</option>
-            <option value="director">Director</option>
+            <option value="read/write">Read/Write</option>
+            <option value="readOnly">Read Only</option>
           </select>
         </div>
         <div className="flex-row space-between my-2">
