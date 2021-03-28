@@ -2,8 +2,13 @@
 
 /* customize the card for the login screen */
 #card-custom {
-	width: 60%;
+	width: 30%;
 	margin: auto;
+}
+
+/* style for buttons that are located next to one another */
+.action-btn {
+	margin-right: 10px;
 }
 
 /* MEDIA QUERIES */

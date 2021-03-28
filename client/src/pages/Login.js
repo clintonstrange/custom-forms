@@ -5,28 +5,27 @@ import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 function Login(props) {
-  const [formState, setFormState] = useState({
-    email: "",
-    password: "",
-  });
-  const [login, { error }] = useMutation(LOGIN);
+	const [formState, setFormState] = useState({
+		email: '',
+		password: ''
+	});
+	const [login, { error }] = useMutation(LOGIN);
 
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const mutationResponse = await login({
-        variables: {
-          email: formState.email,
-          password: formState.password,
-        },
-      });
-      const token = mutationResponse.data.login.token;
-      Auth.login(token);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+	const handleFormSubmit = async event => {
+		event.preventDefault();
+		try {
+			const mutationResponse = await login({
+				variables: {
+					email: formState.email,
+					password: formState.password
+				}
+			});
+			const token = mutationResponse.data.login.token;
+			Auth.login(token);
+		} catch (e) {
+			console.log(e);
+		}
+	};
 
 	const handleChange = event => {
 		const { name, value } = event.target;
@@ -37,7 +36,7 @@ function Login(props) {
 	};
 
 	return (
-		<div className='card medium my-1' id='card-custom'>
+		<div className='my-1' id='card-custom'>
 			{/* <Link to='/signup'>← Create Account</Link> */}
 
 			<h2 className='center align'>Login</h2>
@@ -67,9 +66,18 @@ function Login(props) {
 						<p className='error-text'>The provided credentials are incorrect</p>
 					</div>
 				) : null}
-				<div className='flex-row flex-end'>
-					<button type='submit'>Submit</button>
-					<button type='create' href='/signup'>
+				<div className='flex-row flex-end center'>
+					<button
+						type='submit'
+						className='waves-effect waves-light blue darken-1 btn action-btn'
+					>
+						Submit
+					</button>
+					<button
+						type='create'
+						href='/signup'
+						className='waves-effect waves-light blue darken-1 btn'
+					>
 						Create account
 					</button>
 				</div>
