@@ -24,6 +24,14 @@
 	border-radius: 30px !important;
 }
 
+.container{
+    width: 100%;
+}
+
+.spacer{
+    margin-top: 10px;
+}
+
 /* MEDIA QUERIES */
 @media only screen and (max-width: 992px) {
 	#card-custom {
