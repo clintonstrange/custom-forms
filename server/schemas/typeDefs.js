@@ -12,6 +12,11 @@ const typeDefs = gql`
 		token: ID!
 		user: User
 	}
+# some how add date, createdAt, and screenNum to type Control
+  type Control {
+    documentor: String
+    credentials: String
+  }
 
   type Screenings {
 		_id: ID
@@ -19,6 +24,7 @@ const typeDefs = gql`
 		contact: String
 		positiveTest: String
 		travel: String
+    control: Control
 	}
 
   type Query {

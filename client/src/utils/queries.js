@@ -28,6 +28,10 @@ export const QUERY_SCREENINGS = gql`
       contact
       positiveTest
       travel
+      # control {
+      #   documentor
+      #   credentials
+      # }
     }
 }
 `;
