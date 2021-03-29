@@ -1,10 +1,10 @@
 import React from "react";
-import Form from "../components/Form";
+import Landing from "../pages/Landing";
 
 const Home = () => {
   return (
     <div className="container">
-      <Form />
+      <Landing />
     </div>
   );
 };

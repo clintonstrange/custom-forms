@@ -20,20 +20,14 @@ export const QUERY_ME_BASIC = gql`
   }
 `;
 
-export const QUERY_ME = gql`
+export const QUERY_SCREENINGS = gql`
 {
-  me {
-    _id
-    username
-    email
-    role
-    Screening {
+    Screenings {
       _id
       symptoms
       contact
       positiveTest
       travel
     }
-  }
 }
 `;

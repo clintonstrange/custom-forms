@@ -1,88 +1,116 @@
-import React from "react";
-import Auth from "../../utils/auth";
-import { useQuery } from "@apollo/react-hooks";
-import { QUERY_ME } from "../../utils/queries";
-import { Link } from "react-router-dom";
-// import { idbPromise } from "../utils/helpers"
+import React, { useState } from "react";
+import { useMutation } from "@apollo/react-hooks";
+import { ADD_SCREENING } from "../../utils/mutations";
 
-const Form = () => {
-  const loggedIn = Auth.loggedIn();
-  const { data: userData } = useQuery(QUERY_ME);
+const AdminForm = () => {
+  const [formState, setFormState] = useState({
+    symptoms: "noSymptom",
+    contact: "no",
+    positiveTest: "no",
+    travel: "no",
+  });
+  console.log(formState);
 
-  //const { username, role } = userData?.me;
-  //   console.log(role);
-  //   if (role === 'admin') {
-  //       let admin = true;
-  //   }
+  const [addScreening] = useMutation(ADD_SCREENING);
+
+  const handleScreeningSubmit = async (event) => {
+    event.preventDefault();
+    await addScreening({
+      variables: {
+        symptoms: formState.symptoms,
+        contact: formState.contact,
+        positiveTest: formState.positiveTest,
+        travel: formState.travel,
+      },
+    });
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
   return (
-    <div className="container">
-      {loggedIn && userData ? (
-        <div>
-          <h2>Your Forms</h2>
-          <p>
-            Welcome <span>{userData.me.username}</span>
-          </p>
-          <p>
-            Authorization: <span>{userData.me.role.toUpperCase()}</span>
-          </p>
+    <div>
+      <div>
+        <form onSubmit={handleScreeningSubmit}>
           <div>
-            {userData.me.role === "admin" ? (
-              <div>
-                <p>admin render Check</p>
-                <Link to="/signup">
-                  <button>Create Account</button>
-                </Link>
-              </div>
-            ) : userData.me.role === "read/write" ? (
-              <div>
-                <p>read/write render check</p>
-                <Link to="/signup">
-                  <button>Create Account</button>
-                </Link>
-              </div>
-            ) : (
-              <div>
-                <p>
-                  if logged in and user does not have admin or read/write
-                  access, default to read only access
-                </p>
-              </div>
-            )}
+            <label htmlFor="symptoms">
+              Do you have any of the following symptoms?
+            </label>
+            <select
+              className="browser-default"
+              name="symptoms"
+              type="select"
+              id="symptoms"
+              onChange={handleChange}
+            >
+              <option value="noSymptom">No Symptoms</option>
+              <option value="cough">New and persistent cough</option>
+              <option value="breath">
+                Shortness of breath or any difficutlty breathing
+              </option>
+              <option value="fever">Fever</option>
+            </select>
           </div>
-        </div>
-      ) : (
-        //       <div>
-        //         {state.role.admin ? (
-        //         <div>
-        //             <p>This is an Admin</p>
-        //         </div>
-
-        //     ) : (
-        //         <div>
-        //         {state.role.manager ? (
-        //         <div>
-        //             <p>This is an Manager</p>
-        //         </div>
-        //     )}) : (
-        //         <div>
-        //         {state.role.director ? (
-        //         <div>
-        //             <p>This is an Director</p>
-        //         </div>
-        //     ) : (
-        //       <span>(log in to access your forms!)</span>
-        //     )}
-        //   </div>
-        // </div>
-
-        <h3>
-          <span role="img" aria-label=""></span>
-          Please Login to Access your Forms!
-        </h3>
-      )}
+          <div>
+            <label htmlFor="contact">
+              Have you been in contact with anyone in the last 14 days who is
+              experiencing these symptoms?
+            </label>
+            <select
+              className="browser-default"
+              name="contact"
+              type="select"
+              id="contact"
+              onChange={handleChange}
+            >
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="positiveTest">
+              Have you been in contact with anyone who has since tested positive
+              for Covid-19?
+            </label>
+            <select
+              className="browser-default"
+              name="positiveTest"
+              type="select"
+              id="positiveTest"
+              onChange={handleChange}
+            >
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+              <option value="unsure">Unsure</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="travel">
+              Have you traveled abroad in the last 1-2 months?
+            </label>
+            <select
+              className="browser-default"
+              name="travel"
+              type="select"
+              id="travel"
+              onChange={handleChange}
+            >
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </div>
+          <div className="flex-row flex-end">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default Form;
+export default AdminForm;

@@ -1,18 +1,19 @@
 import React from "react";
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 import { useQuery } from "@apollo/react-hooks";
-import { QUERY_ME_BASIC } from "../utils/queries";
-import Form from "../components/Form";
+import { QUERY_ME } from "../../utils/queries";
+import Form from "../Form";
 // import { idbPromise } from "../utils/helpers"
 
-const Landing = () => {
+const Form = () => {
   const loggedIn = Auth.loggedIn();
-  const { data: userData } = useQuery(QUERY_ME_BASIC);
+  const { data: userData } = useQuery(QUERY_ME);
 
   return (
     <div className="container">
       {loggedIn && userData ? (
         <div>
+          <h2>Your Forms</h2>
           <p>
             Welcome <span>{userData.me.username}</span>
           </p>
@@ -22,10 +23,12 @@ const Landing = () => {
           <div>
             {userData.me.role === "admin" ? (
               <div>
+                <p>admin render Check</p>
                 <Form />
               </div>
             ) : userData.me.role === "read/write" ? (
               <div>
+                <p>read/write render check</p>
                 <Form />
               </div>
             ) : (
@@ -45,4 +48,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default Form;
