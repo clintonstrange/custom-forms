@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import NoMatch from "./pages/NoMatch";
 import Signup from "./pages/Signup";
 import Landing from "./pages/Landing";
+import ViewData from "./pages/ViewData";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -35,6 +36,7 @@ function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/landing" component={Landing} />
+              <Route exact path="/viewdata" component={ViewData} />
               <Route component={NoMatch} />
             </Switch>
           </StoreProvider>

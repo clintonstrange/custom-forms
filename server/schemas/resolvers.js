@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Control, Screening } = require("../models");
+const { User, Control, Screenings } = require("../models");
 const { signToken } = require("../utils/auth");
 
 //this file will be the engine for being able to add things like symptoms to the data base if you are an authenticated user (admin user)

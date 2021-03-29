@@ -18,11 +18,11 @@ const covidScreeningSchema = new Schema(
       maxlength: 280,
     },
     contact: {
-      type: String,
+      type: Boolean,
       required: true,
     },
     positiveTest: {
-      type: String,
+      type: Boolean,
       required: true,
     },
     travel: {
