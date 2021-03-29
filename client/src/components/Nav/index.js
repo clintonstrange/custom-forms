@@ -7,13 +7,12 @@ import { QUERY_ME } from "../../utils/queries";
 function Nav() {
   const loggedIn = Auth.loggedIn();
   const { data: userData } = useQuery(QUERY_ME);
-  console.log(userData);
 
-  function showNavigation() {
-    if (loggedIn && userData) {
-      return (
-        <div className="nav-wrapper blue darken-1">
-          <a href="/" className="brand-logo left">
+  return (
+    <div>
+      {loggedIn && userData ? (
+        <nav className="nav-wrapper blue darken-1">
+          <a href="/" className="brand-logo left margin-left">
             Whatever Works 2.0
           </a>
           <ul className="flex-row right">
@@ -27,13 +26,15 @@ function Nav() {
               <li className="mx-1">
                 <a href="/signup">Create Account</a>
               </li>
-            ) : null}
+            ) : (
+              <li>
+                <p>Test</p>
+              </li>
+            )}
           </ul>
-        </div>
-      );
-    } else {
-      return (
-        <div className="nav-wrapper blue darken-1">
+        </nav>
+      ) : (
+        <nav className="nav-wrapper blue darken-1">
           <a href="/" className="brand-logo left margin-left">
             Whatever Works 2.0
           </a>
@@ -42,12 +43,10 @@ function Nav() {
               <Link to="/login">Login</Link>
             </li>
           </ul>
-        </div>
-      );
-    }
-  }
-
-  return <nav>{showNavigation()}</nav>;
+        </nav>
+      )}
+    </div>
+  );
 }
 
 export default Nav;
