@@ -1,124 +1,116 @@
-import React from 'react';
-import Auth from '../../utils/auth';
-import { useQuery } from '@apollo/react-hooks';
-import { QUERY_ME } from '../../utils/queries';
-import AdminForm from '../AdminForm';
-// import { idbPromise } from "../utils/helpers"
+import React, { useState } from "react";
+import { useMutation } from "@apollo/react-hooks";
+import { ADD_SCREENING } from "../../utils/mutations";
 
 const Form = () => {
-	const loggedIn = Auth.loggedIn();
-	const { data: userData } = useQuery(QUERY_ME);
+  const [formState, setFormState] = useState({
+    symptoms: "noSymptom",
+    contact: "no",
+    positiveTest: "no",
+    travel: "no",
+  });
+  console.log(formState);
 
-	return (
-		<div className='container'>
-			{loggedIn && userData ? (
-				<div>
-					<h2 className='center-align'>COVID Screening Form</h2>
-					<p>
-						Welcome <span>{userData.me.username}</span>
-					</p>
-					<p>
-						Authorization: <span>{userData.me.role.toUpperCase()}</span>
-					</p>
-					<div>
-						{userData.me.role === 'admin' ? (
-							<div>
-								<p>admin render Check</p>
-								<AdminForm />
-							</div>
-						) : userData.me.role === 'read/write' ? (
-							<div>
-								<p>read/write render check</p>
-								<AdminForm />
-							</div>
-						) : (
-							<div>
-								<p>
-									if logged in and user does not have admin or read/write
-									access, default to read only access
-								</p>
-							</div>
-						)}
-					</div>
-				</div>
-			) : (
-				<div>
-					<h4 className='center-align welcome-header'>
-						Created to capture all of your data input needs!
-					</h4>
-					<br></br>
-					<br></br>
-					<div class='row'>
-						<div class='col s12 m4'>
-							<div class='card'>
-								<div class='card-image'>
-									{/* image from https://www.oogazone.com/wp-content/uploads/2018/06/best-free-data-analysis-design-concept-vector-library.jpg */}
-									<img
-										src='https://static.vecteezy.com/system/resources/previews/000/547/940/original/data-analysis-illustration-vector.jpg'
-										alt=''
-									/>
-									<span class='card-title'>Card Title</span>
-								</div>
-								<div class='card-content'>
-									<p>
-										I am a very simple card. I am good at containing small bits
-										of information. I am convenient because I require little
-										markup to use effectively.
-									</p>
-								</div>
-								<div class='card-action'>
-									<a href='#'>This is a link</a>
-								</div>
-							</div>
-						</div>
-						<div class='col s12 m4'>
-							<div class='card'>
-								<div class='card-image'>
-									<img
-										src='https://static.vecteezy.com/system/resources/previews/000/540/087/original/vector-analysis-word-lettering-illustration.jpg'
-										alt=''
-									/>
-									<span class='card-title'>Card Title</span>
-								</div>
-								<div class='card-content'>
-									<p>
-										I am a very simple card. I am good at containing small bits
-										of information. I am convenient because I require little
-										markup to use effectively.
-									</p>
-								</div>
+  const [addScreening] = useMutation(ADD_SCREENING);
 
-								<div class='card-action'>
-									<a href='#'>This is a link</a>
-								</div>
-							</div>
-						</div>
-						<div class='col s12 m4'>
-							<div class='card'>
-								<div class='card-image'>
-									<img
-										src='https://static.vecteezy.com/system/resources/previews/000/547/754/non_2x/data-analysis-line-icons-illustration-vector.jpg'
-										alt=''
-									/>
-									<span class='card-title'>Card Title</span>
-								</div>
-								<div class='card-content'>
-									<p>
-										I am a very simple card. I am good at containing small bits
-										of information. I am convenient because I require little
-										markup to use effectively.
-									</p>
-								</div>
-								<div class='card-action'>
-									<a href='#'>This is a link</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			)}
-		</div>
-	);
+  const handleScreeningSubmit = async (event) => {
+    event.preventDefault();
+    await addScreening({
+      variables: {
+        symptoms: formState.symptoms,
+        contact: formState.contact,
+        positiveTest: formState.positiveTest,
+        travel: formState.travel,
+      },
+    });
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  return (
+    <div>
+      <div>
+        <form onSubmit={handleScreeningSubmit}>
+          <div>
+            <label htmlFor="symptoms">
+              Do you have any of the following symptoms?
+            </label>
+            <select
+              className="browser-default"
+              name="symptoms"
+              type="select"
+              id="symptoms"
+              onChange={handleChange}
+            >
+              <option value="noSymptom">No Symptoms</option>
+              <option value="cough">New and persistent cough</option>
+              <option value="breath">
+                Shortness of breath or any difficutlty breathing
+              </option>
+              <option value="fever">Fever</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="contact">
+              Have you been in contact with anyone in the last 14 days who is
+              experiencing these symptoms?
+            </label>
+            <select
+              className="browser-default"
+              name="contact"
+              type="select"
+              id="contact"
+              onChange={handleChange}
+            >
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="positiveTest">
+              Have you been in contact with anyone who has since tested positive
+              for Covid-19?
+            </label>
+            <select
+              className="browser-default"
+              name="positiveTest"
+              type="select"
+              id="positiveTest"
+              onChange={handleChange}
+            >
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+              <option value="unsure">Unsure</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="travel">
+              Have you traveled abroad in the last 1-2 months?
+            </label>
+            <select
+              className="browser-default"
+              name="travel"
+              type="select"
+              id="travel"
+              onChange={handleChange}
+            >
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </div>
+          <div className="flex-row flex-end">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default Form;
