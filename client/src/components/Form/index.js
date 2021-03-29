@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_SCREENING } from "../../utils/mutations";
 
-const AdminForm = () => {
+const Form = () => {
   const [formState, setFormState] = useState({
     symptoms: "noSymptom",
     contact: "no",
@@ -113,4 +113,4 @@ const AdminForm = () => {
   );
 };
 
-export default AdminForm;
+export default Form;

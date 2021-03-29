@@ -16,8 +16,8 @@ const typeDefs = gql`
   type Screenings {
 		_id: ID
 		symptoms: String
-		contact: Boolean
-		positiveTest: Boolean
+		contact: String
+		positiveTest: String
 		travel: String
 	}
 

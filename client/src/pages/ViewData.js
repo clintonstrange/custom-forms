@@ -21,16 +21,22 @@ function ViewData() {
     }
     return (
         <div>
-            <h2>Here are the different form you've completed:</h2>
-            {data.map((screening, index) => (
-                <div key={index}>
-                    <h4>{screening.control}</h4>
-                    <p>{screening.symptoms}</p>
-                    <p>{screening.contact}</p>
-                    <p>{screening.positiveTest}</p>
-                    <p>{screening.travel}</p>
-                </div>
-            ))}
+            <h2>Here are the different forms you've completed:</h2>
+            <div className="row">
+                {data.screenings.map((screening) => (
+                    <div className="col s12 m2">
+                        <div className="card blue-grey darken-1">
+                            <div className="card-content white-text" key={screening._id}>
+                                <span className="card-title">{screening.control}</span>
+                                <p>{screening.symptoms}</p>
+                                <p>{screening.contact}</p>
+                                <p>{screening.positiveTest}</p>
+                                <p>{screening.travel}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

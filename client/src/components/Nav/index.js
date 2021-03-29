@@ -8,11 +8,14 @@ function Nav() {
   const loggedIn = Auth.loggedIn();
   const { data: userData } = useQuery(QUERY_ME_BASIC);
 
-  function showNavigation() {
-    if (loggedIn && userData) {
-      return (
-        <div className="container">
-          <ul className="flex-row">
+  return (
+    <div>
+      {loggedIn && userData ? (
+        <nav className="nav-wrapper blue darken-1">
+          <a href="/" className="brand-logo left margin-left">
+            Whatever Works 2.0
+          </a>
+          <ul className="flex-row right">
             <li className="mx-1">
               <a href="/" onClick={() => Auth.logout()}>
                 Logout
@@ -22,36 +25,29 @@ function Nav() {
               <Link to="/viewdata">View Data</Link>
             </li>
             {userData.me.role === "admin" ? (
-              <div>
-                <li className="mx-1">
-                  <a href="/signup">Create Account</a>
-                </li>
-              </div>
-            ) : null}
+              <li className="mx-1">
+                <a href="/signup">Create Account</a>
+              </li>
+            ) : (
+              <li>
+                <p>Test</p>
+              </li>
+            )}
           </ul>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <ul className="flex-row">
+        </nav>
+      ) : (
+        <nav className="nav-wrapper blue darken-1">
+          <a href="/" className="brand-logo left margin-left">
+            Whatever Works 2.0
+          </a>
+          <ul className="flex-row right">
             <li className="mx-1">
               <Link to="/login">Login</Link>
             </li>
           </ul>
-        </div>
-      );
-    }
-  }
-
-  return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">Whatever Works 2.0</Link>
-      </h1>
-
-      <nav>{showNavigation()}</nav>
-    </header>
+        </nav>
+      )}
+    </div>
   );
 }
 

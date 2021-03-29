@@ -22,7 +22,7 @@ export const QUERY_ME_BASIC = gql`
 
 export const QUERY_SCREENINGS = gql`
 {
-    Screenings {
+    screenings {
       _id
       symptoms
       contact
