@@ -13,7 +13,7 @@ const Form = () => {
 		<div className='container'>
 			{loggedIn && userData ? (
 				<div>
-					<h2>Your Forms</h2>
+					<h2 className='center-align'>COVID Screening Form</h2>
 					<p>
 						Welcome <span>{userData.me.username}</span>
 					</p>
