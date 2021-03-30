@@ -26,7 +26,7 @@ const typeDefs = gql`
   type Control {
     _id: ID
     documentor: String
-    screenNum: [Int]
+    screenNum: [Screenings]
     credentials: String
   }
 
@@ -49,11 +49,7 @@ const typeDefs = gql`
       role: String!
       password: String!
     ): Auth
-    addControl(
-      documentor: String!
-      screenNum: Int!
-      credentials: String!
-    ): Control
+    addControl(documentor: String!, credentials: String!): Control
     addScreening(
       control: ID!
       symptoms: String!
@@ -62,7 +58,7 @@ const typeDefs = gql`
       travel: String!
       screenDate: String!
     ): Screenings
-    submitForm(formId: ID!, form: String!): Screenings
+    removeScreening(_id: ID!): Screenings
   }
 `;
 

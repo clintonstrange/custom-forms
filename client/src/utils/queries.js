@@ -25,7 +25,13 @@ export const QUERY_CONTROL = gql`
     controls {
       _id
       documentor
-      screenNum
+      screenNum {
+        _id
+        symptoms
+        contact
+        positiveTest
+        travel
+      }
       credentials
     }
   }

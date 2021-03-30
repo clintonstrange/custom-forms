@@ -58,7 +58,6 @@ export const ADD_SCREENING = gql`
       control {
         _id
         documentor
-        screenNum
         credentials
       }
       symptoms
@@ -67,7 +66,7 @@ export const ADD_SCREENING = gql`
       travel
       screenDate
     }
-}
+  }
 `;
 
 export const ADD_CONTROL = gql`

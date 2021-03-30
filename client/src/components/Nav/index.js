@@ -7,9 +7,8 @@ import { QUERY_ME } from "../../utils/queries";
 function Nav() {
   const loggedIn = Auth.loggedIn();
   const { data: userData } = useQuery(QUERY_ME);
-  console.log(userData);
+  //console.log(userData);
 
-  // const { me : { role} } = userData
 
   return (
     <div>

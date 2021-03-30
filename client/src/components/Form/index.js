@@ -5,7 +5,6 @@ import { QUERY_CONTROL } from "../../utils/queries";
 import { DatePicker } from "react-materialize";
 import Materialize from "materialize-css";
 import moment from "moment";
-//import ScreenDate from "../ScreenDate";
 
 const Form = () => {
   const [formState, setFormState] = useState({
@@ -77,6 +76,9 @@ const Form = () => {
             id="control"
             onChange={handleChange}
           >
+            <option disabled selected>
+              Select Control
+            </option>
             {controlData ? (
               controlData.controls.map((control) => (
                 <option value={control._id} key={control._id}>
@@ -89,13 +91,9 @@ const Form = () => {
             ) : (
               <option>Loading</option>
             )}
-            <option disabled selected defaultValue="">
-              Select Control
-            </option>
           </select>
         </div>
         <div>
-          {/* <label htmlFor="screenDate" className="datepicker"></label> */}
           <DatePicker
             label="Screening Date"
             name="screenDate"

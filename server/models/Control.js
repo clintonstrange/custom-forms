@@ -1,5 +1,5 @@
-const { Schema, model, isValidObjectId } = require("mongoose");
-const dateFormat = require('../utils/dateFormat');
+const { Schema, model } = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
 const bcrypt = require("bcrypt");
 
 const controlSchema = new Schema(
@@ -15,10 +15,10 @@ const controlSchema = new Schema(
     // JAKE--- I believe that ObjectId's auto increment with 12 digits automatically in Mongo,
     // so references the Screening Model should work.
     screenNum: [
-		{
-			type: Schema.Types.ObjectId,
-			ref: "Control",
-		  },
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Screenings",
+      },
     ],
 
     // what are the credentials of the individual (Civilian, EMT, Paramedic, RN, MD)
@@ -26,7 +26,6 @@ const controlSchema = new Schema(
       type: String,
       required: true,
       trim: true,
-	  
     },
     // this should be a timestamp field when the screen took place - this should be automatically generated
     createdAt: {
