@@ -83,12 +83,33 @@ const resolvers = {
       const controlData = await Control.findById({ _id: controlId });
       console.log("======= CONTROL =======" + controlData);
       console.log(controlData.documentor);
+      controlDoc = controlData.documentor;
+      console.log(controlDoc);
+      controlCred = controlData.credentials;
+      console.log(controlCred);
+
+      // const screenings = await Screenings.create({
+      //   ...args,
+      //   control: {
+      //     _id: controlId,
+      //     documentor: controlData.documentor,
+      //     credentials: controlData.credentials,
+      //   },
+      //   symptons: args.symptons,
+      //   contact: args.contact,
+      //   positiveTest: args.positiveTest,
+      //   travel: args.travel,
+      //   screenDate: args.screenDate,
+      // });
 
       const screenings = await Screenings.create({
+        ...args,
         control: {
-          _id: controlData._id,
+          _id: controlId,
+          documentor: controlData.documentor,
+          credentials: controlData.credentials,
         },
-        symptoms: args.symptoms,
+        symptons: args.symptons,
         contact: args.contact,
         positiveTest: args.positiveTest,
         travel: args.travel,

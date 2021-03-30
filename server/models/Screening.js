@@ -6,10 +6,11 @@ const dateFormat = require("../utils/dateFormat");
 
 const covidScreeningSchema = new Schema(
   {
-    control: {
-      type: Schema.Types.ObjectId,
-      ref: "Control",
-    },
+    control:
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Control",
+      },
     symptoms: {
       type: String,
       required: true,
