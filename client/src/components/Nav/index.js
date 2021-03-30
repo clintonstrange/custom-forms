@@ -26,11 +26,7 @@ function Nav() {
               <li className="mx-1">
                 <a href="/signup">Create Account</a>
               </li>
-            ) : (
-              <li>
-                <p>Test</p>
-              </li>
-            )}
+            ) : null}
           </ul>
         </nav>
       ) : (

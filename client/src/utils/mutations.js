@@ -40,16 +40,42 @@ export const ADD_USER = gql`
 
 export const ADD_SCREENING = gql`
   mutation addScreening(
+    $control: ID!
     $symptoms: String!
     $contact: String!
     $positiveTest: String!
     $travel: String!
   ) {
-    Screenings(
+    addScreening(
+      control: $control
       symptoms: $symptoms
       contact: $contact
       positiveTest: $positiveTest
       travel: $travel
+    ) {
+      control {
+        _id
+      }
+      symptoms
+      contact
+      positiveTest
+      travel
+    }
+  }
+`;
+
+export const ADD_CONTROL = gql`
+  mutation addControl(
+    $documentor: String!
+    $screenNum: Int!
+    $credentials: String!
+    $dateTime: Date!
+  ) {
+    Control(
+      documentor: $documentor
+      screenNum: $screenNum
+      credentials: $credentials
+      dateTime: $dateTime
     )
   }
 `;

@@ -25,6 +25,15 @@ const resolvers = {
     screenings: async () => {
       return await Screenings.find();
     },
+    screening: async (parent, { _id }) => {
+      return await Screenings.findOne({ _id });
+    },
+    controls: async () => {
+      return await Control.find();
+    },
+    control: async (parent, { _id }) => {
+      return await Control.findOne({ _id });
+    },
   },
 
   Mutation: {
@@ -68,8 +77,29 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     addScreening: async (parent, args) => {
-      const screenings = await Screenings.create(args);
+      //console.log(args.control);
+      const controlId = args.control;
+      //console.log(controlId);
+      const control = await Control.findById({ _id: controlId });
+      //console.log(control);
+
+      const screenings = await Screenings.create({
+        control: {
+          _id: control._id,
+        },
+        symptoms: args.symptoms,
+        contact: args.contact,
+        positiveTest: args.positiveTest,
+        travel: args.travel,
+      });
+
+      console.log(screenings);
+
       return screenings;
+    },
+    addControl: async (parent, args) => {
+      const control = await Control.create(args);
+      return control;
     },
     // TODO: build out a 'viewData' mutation when the time is right
   },
