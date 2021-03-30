@@ -7,6 +7,9 @@ import { QUERY_ME } from "../../utils/queries";
 function Nav() {
   const loggedIn = Auth.loggedIn();
   const { data: userData } = useQuery(QUERY_ME);
+  console.log(userData);
+
+  // const { me : { role} } = userData
 
   return (
     <div>
@@ -22,7 +25,7 @@ function Nav() {
               </a>
             </li>
             <li className="margin-right">DATA RENDERING LINK HERE</li>
-            {userData.me.role === "admin" ? (
+            {userData?.me?.role === "admin" ? (
               <li className="mx-1">
                 <a href="/signup">Create Account</a>
               </li>

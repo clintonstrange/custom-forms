@@ -15,9 +15,9 @@ const Form = () => {
 
   const [addScreening] = useMutation(ADD_SCREENING);
   const { data: controlData } = useQuery(QUERY_CONTROL);
-  //console.log(controlData);
-  const { controls } = controlData;
-  console.log(controls);
+  console.log(controlData);
+  //const { controls } = controlData;
+  //console.log(controlData.controls);
 
   const handleScreeningSubmit = async (event) => {
     event.preventDefault();
@@ -58,15 +58,19 @@ const Form = () => {
             id="control"
             onChange={handleChange}
           >
-            {controls.map((control) => (
-              <option value={control._id} key={control._id}>
-                By: {control.documentor}
-                {" ("}
-                {control.credentials}
-                {") conducted on "}
-                {control.dateTime}
-              </option>
-            ))}
+            {controlData ? (
+              controlData.controls.map((control) => (
+                <option value={control._id} key={control._id}>
+                  By: {control.documentor}
+                  {" ("}
+                  {control.credentials}
+                  {") conducted on "}
+                  {control.dateTime}
+                </option>
+              ))
+            ) : (
+              <option>Loading</option>
+            )}
             <option disabled selected defaultValue="">
               Select Control
             </option>
