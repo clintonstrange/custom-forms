@@ -45,6 +45,7 @@ export const ADD_SCREENING = gql`
     $contact: String!
     $positiveTest: String!
     $travel: String!
+    $dateTime: String!
   ) {
     addScreening(
       control: $control
@@ -52,6 +53,7 @@ export const ADD_SCREENING = gql`
       contact: $contact
       positiveTest: $positiveTest
       travel: $travel
+      dateTime: $dateTime
     ) {
       control {
         _id
@@ -60,6 +62,7 @@ export const ADD_SCREENING = gql`
       contact
       positiveTest
       travel
+      dateTime
     }
   }
 `;

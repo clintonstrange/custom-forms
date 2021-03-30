@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import { ADD_SCREENING } from "../../utils/mutations";
 import { QUERY_CONTROL } from "../../utils/queries";
+import { DatePicker } from "react-materialize";
+import ScreenDate from "../ScreenDate";
 
 const Form = () => {
   const [formState, setFormState] = useState({
@@ -10,8 +12,10 @@ const Form = () => {
     contact: "no",
     positiveTest: "no",
     travel: "no",
+    dateTime: "",
   });
-  // console.log(formState);
+  console.log(formState);
+  const { mydate } = formState;
 
   const [addScreening] = useMutation(ADD_SCREENING);
   const { data: controlData } = useQuery(QUERY_CONTROL);
@@ -29,6 +33,7 @@ const Form = () => {
           contact: formState.contact,
           positiveTest: formState.positiveTest,
           travel: formState.travel,
+          dateTime: formState.dateTime,
         },
       });
     } catch (e) {
@@ -43,6 +48,11 @@ const Form = () => {
       [name]: value,
     });
   };
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var elems = document.querySelectorAll(".datepicker");
+    var instances = DatePicker.getInstance(elems);
+  });
 
   return (
     <div>
@@ -64,8 +74,7 @@ const Form = () => {
                   By: {control.documentor}
                   {" ("}
                   {control.credentials}
-                  {") conducted on "}
-                  {control.dateTime}
+                  {") "}
                 </option>
               ))
             ) : (
@@ -75,6 +84,11 @@ const Form = () => {
               Select Control
             </option>
           </select>
+        </div>
+        <div>
+          <label htmlFor="screendate" className="">
+            Screening Date
+          </label>
         </div>
         <div>
           <label htmlFor="symptoms">

@@ -39,6 +39,8 @@ const typeDefs = gql`
     contact: String
     positiveTest: String
     travel: String
+    dateTime: String
+    createAt: String
   }
 
   type Mutation {
@@ -61,6 +63,7 @@ const typeDefs = gql`
       contact: String!
       positiveTest: String!
       travel: String!
+      dateTime: String!
     ): Screenings
     submitForm(formId: ID!, form: String!): Screenings
   }

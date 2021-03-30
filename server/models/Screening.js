@@ -27,6 +27,17 @@ const covidScreeningSchema = new Schema(
       type: String,
       required: true,
     },
+    dateTime: {
+      type: Date,
+      required: true,
+      trim: true,
+      get: (timestamp) => dateFormat(timestamp),
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: (timestamp) => dateFormat(timestamp),
+    },
   },
   {
     toJSON: {
