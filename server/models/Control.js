@@ -26,12 +26,7 @@ const controlSchema = new Schema(
       type: String,
       required: true,
       trim: true,
-    },
-    dateTime: {
-      type: Date,
-      required: true,
-      trim: true,
-	  get: (timestamp) => dateFormat(timestamp),
+	  
     },
     // this should be a timestamp field when the screen took place - this should be automatically generated
     createdAt: {

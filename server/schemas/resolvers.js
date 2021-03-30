@@ -80,20 +80,23 @@ const resolvers = {
       //console.log(args.control);
       const controlId = args.control;
       //console.log(controlId);
-      const control = await Control.findById({ _id: controlId });
-      //console.log(control);
+      const controlData = await Control.findById({ _id: controlId });
+      console.log("======= CONTROL =======" + controlData);
+      console.log(controlData.documentor);
 
       const screenings = await Screenings.create({
         control: {
-          _id: control._id,
+          _id: controlData._id,
         },
         symptoms: args.symptoms,
         contact: args.contact,
         positiveTest: args.positiveTest,
         travel: args.travel,
+        screenDate: args.screenDate,
       });
 
-      console.log(screenings);
+      console.log("=====SCREENINGS=======" + screenings);
+      console.log(screenings.control);
 
       return screenings;
     },

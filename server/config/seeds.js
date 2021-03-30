@@ -8,35 +8,30 @@ db.once("open", async () => {
     documentor: "Perry Cox",
     screenNum: [],
     credentials: "MD",
-    dateTime: "December 25, 2020",
   });
 
   await Control.create({
     documentor: "Carla Turk",
     screenNum: [],
     credentials: "RN",
-    dateTime: "December 24, 2020",
   });
 
   await Control.create({
     documentor: "John Dorian",
     screenNum: [],
     credentials: "Paramedic",
-    dateTime: "December 23, 2020",
   });
 
   await Control.create({
     documentor: "Chris Turk",
     screenNum: [],
     credentials: "EMT",
-    dateTime: "December 22, 2020",
   });
 
   await Control.create({
     documentor: "Glen Matthews",
     screenNum: [],
     credentials: "Civilian",
-    dateTime: "December 21, 2020",
   });
 
   console.log(" ========= CONTROL SEEDED ========= ");

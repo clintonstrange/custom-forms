@@ -3,7 +3,9 @@ import { useMutation, useQuery } from "@apollo/react-hooks";
 import { ADD_SCREENING } from "../../utils/mutations";
 import { QUERY_CONTROL } from "../../utils/queries";
 import { DatePicker } from "react-materialize";
-import ScreenDate from "../ScreenDate";
+import Materialize from "materialize-css";
+import moment from "moment";
+//import ScreenDate from "../ScreenDate";
 
 const Form = () => {
   const [formState, setFormState] = useState({
@@ -12,14 +14,13 @@ const Form = () => {
     contact: "no",
     positiveTest: "no",
     travel: "no",
-    dateTime: "",
+    screenDate: "",
   });
   console.log(formState);
-  const { mydate } = formState;
 
   const [addScreening] = useMutation(ADD_SCREENING);
   const { data: controlData } = useQuery(QUERY_CONTROL);
-  console.log(controlData);
+  //console.log(controlData);
   //const { controls } = controlData;
   //console.log(controlData.controls);
 
@@ -33,7 +34,7 @@ const Form = () => {
           contact: formState.contact,
           positiveTest: formState.positiveTest,
           travel: formState.travel,
-          dateTime: formState.dateTime,
+          screenDate: formState.screenDate,
         },
       });
     } catch (e) {
@@ -51,7 +52,15 @@ const Form = () => {
 
   document.addEventListener("DOMContentLoaded", function () {
     var elems = document.querySelectorAll(".datepicker");
-    var instances = DatePicker.getInstance(elems);
+    Materialize.DatePicker.getInstance(elems, {
+      onSelect: function (date) {
+        console.log("onSelect: " + date);
+        setFormState({
+          ...formState,
+          screenDate: date,
+        });
+      },
+    });
   });
 
   return (
@@ -71,7 +80,7 @@ const Form = () => {
             {controlData ? (
               controlData.controls.map((control) => (
                 <option value={control._id} key={control._id}>
-                  By: {control.documentor}
+                  {control.documentor}
                   {" ("}
                   {control.credentials}
                   {") "}
@@ -86,9 +95,24 @@ const Form = () => {
           </select>
         </div>
         <div>
-          <label htmlFor="screendate" className="">
-            Screening Date
-          </label>
+          {/* <label htmlFor="screenDate" className="datepicker"></label> */}
+          <DatePicker
+            label="Screening Date"
+            name="screenDate"
+            id="screenDate"
+            type="text"
+            className="datepicker"
+            value={formState.screenDate}
+            onChange={(newDate) => {
+              handleChange({
+                target: {
+                  id: "screenDate",
+                  name: "screenDate",
+                  value: moment(newDate).format("MMMM DD, YYYY"),
+                },
+              });
+            }}
+          />
         </div>
         <div>
           <label htmlFor="symptoms">

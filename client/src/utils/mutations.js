@@ -45,7 +45,7 @@ export const ADD_SCREENING = gql`
     $contact: String!
     $positiveTest: String!
     $travel: String!
-    $dateTime: String!
+    $screenDate: String!
   ) {
     addScreening(
       control: $control
@@ -53,18 +53,21 @@ export const ADD_SCREENING = gql`
       contact: $contact
       positiveTest: $positiveTest
       travel: $travel
-      dateTime: $dateTime
+      screenDate: $screenDate
     ) {
       control {
         _id
+        documentor
+        screenNum
+        credentials
       }
       symptoms
       contact
       positiveTest
       travel
-      dateTime
+      screenDate
     }
-  }
+}
 `;
 
 export const ADD_CONTROL = gql`
@@ -72,13 +75,11 @@ export const ADD_CONTROL = gql`
     $documentor: String!
     $screenNum: Int!
     $credentials: String!
-    $dateTime: Date!
   ) {
     Control(
       documentor: $documentor
       screenNum: $screenNum
       credentials: $credentials
-      dateTime: $dateTime
     )
   }
 `;

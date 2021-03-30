@@ -28,8 +28,6 @@ const typeDefs = gql`
     documentor: String
     screenNum: [Int]
     credentials: String
-    dateTime: String
-    createdAt: String
   }
 
   type Screenings {
@@ -39,8 +37,8 @@ const typeDefs = gql`
     contact: String
     positiveTest: String
     travel: String
-    dateTime: String
-    createAt: String
+    screenDate: String
+    createdAt: String
   }
 
   type Mutation {
@@ -55,7 +53,6 @@ const typeDefs = gql`
       documentor: String!
       screenNum: Int!
       credentials: String!
-      dateTime: String!
     ): Control
     addScreening(
       control: ID!
@@ -63,7 +60,7 @@ const typeDefs = gql`
       contact: String!
       positiveTest: String!
       travel: String!
-      dateTime: String!
+      screenDate: String!
     ): Screenings
     submitForm(formId: ID!, form: String!): Screenings
   }

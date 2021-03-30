@@ -27,7 +27,7 @@ const covidScreeningSchema = new Schema(
       type: String,
       required: true,
     },
-    dateTime: {
+    screenDate: {
       type: Date,
       required: true,
       trim: true,

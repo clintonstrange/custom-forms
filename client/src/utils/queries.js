@@ -27,8 +27,6 @@ export const QUERY_CONTROL = gql`
       documentor
       screenNum
       credentials
-      dateTime
-      createdAt
     }
   }
 `;
