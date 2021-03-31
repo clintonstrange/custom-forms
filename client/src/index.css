@@ -19,17 +19,36 @@
 	margin-left: 10px;
 }
 
+.form-margin {
+	width: 80%;
+	margin: auto;
+}
+
 .login-btn {
 	width: 75%;
 	margin: auto;
+}
+
+.padding-top {
+	padding-top: 10px;
 }
 
 .btn {
 	border-radius: 30px !important;
 }
 
+select {
+	border-radius: 30px !important;
+}
+
 .container {
 	width: 100%;
+}
+
+.form-container {
+	margin: 0 auto;
+	max-width: 1280px;
+	padding-bottom: 60px;
 }
 
 .spacer {
@@ -52,6 +71,16 @@ input[type='search']:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
 	border-bottom: 1px solid black !important;
 	box-shadow: 0 1px 0 0 black !important;
+}
+
+/* added this to anchor the footer at the bottom of the login page */
+.login-footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.datepicker-date-display {
+	background-color: grey !important;
 }
 
 /* MEDIA QUERIES */
