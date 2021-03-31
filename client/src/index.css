@@ -79,15 +79,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 	bottom: 0;
 	width: 100%;
 }
-
-/* added this to anchor the footer at the bottom of the form page */
-/* .form-footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-} */
-
-.form-footer {
+.datepicker-date-display {
+	background-color: grey !important;
 }
 
 /* MEDIA QUERIES */
