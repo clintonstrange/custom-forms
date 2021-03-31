@@ -1,13 +1,13 @@
 import React from "react";
 import Auth from "../utils/auth";
 import { useQuery } from "@apollo/react-hooks";
-import { QUERY_ME_BASIC } from "../utils/queries";
+import { QUERY_ME } from "../utils/queries";
 import Form from "../components/Form";
 // import { idbPromise } from "../utils/helpers"
 
 const Landing = () => {
   const loggedIn = Auth.loggedIn();
-  const { data: userData } = useQuery(QUERY_ME_BASIC);
+  const { data: userData } = useQuery(QUERY_ME);
 
   return (
     <div className="container">

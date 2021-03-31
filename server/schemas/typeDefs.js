@@ -26,7 +26,7 @@ const typeDefs = gql`
   type Control {
     _id: ID
     documentor: String
-    screenNum: [Screenings]
+    # screenNum: [Screenings]
     credentials: String
   }
 
