@@ -1,4 +1,8 @@
 /* custom css for desktops */
+.body-display {
+	padding-top: 20px;
+	padding-bottom: 60px;
+}
 
 /* customize the card for the login screen */
 #card-custom {
