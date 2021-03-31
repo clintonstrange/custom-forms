@@ -1,2 +1,5 @@
 export const UPDATE_USER = "UPDATE_USER";
 export const ADD_SCREENING = "ADD_SCREENING";
+
+export const UPDATE_CONTROL = "UPDATE_CONTROL";
+export const UPDATE_SCREENINGS = "UPDATE_SCREENINGS";

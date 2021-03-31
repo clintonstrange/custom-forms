@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
@@ -37,6 +38,7 @@ function Login(props) {
 
   return (
     <div className="my-1" id="card-custom">
+      <Link to="/">← Go to Homepage</Link>
       <h5 className="center align">Welcome to whatever works!</h5>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
@@ -57,7 +59,6 @@ function Login(props) {
           <div>
             <p className="error-text">The provided credentials are incorrect</p>
           </div>
-
         ) : null}
         <div className="flex-row center-align">
           <button

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
 import { useQuery } from "@apollo/react-hooks";
 import { QUERY_ME } from "../utils/queries";
@@ -11,6 +12,7 @@ const Landing = () => {
 
   return (
     <div className="container">
+      <Link to="/">← Go to Homepage</Link>
       {loggedIn && userData ? (
         <div>
           <p>

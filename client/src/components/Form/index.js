@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/react-hooks";
+import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_SCREENING } from "../../utils/mutations";
-import { QUERY_CONTROL } from "../../utils/queries";
+import { QUERY_CONTROL, QUERY_SCREENINGS } from "../../utils/queries";
+import { UPDATE_CONTROL, UPDATE_SCREENINGS } from "../../utils/actions";
 import { DatePicker } from "react-materialize";
+import { idbPromise } from "../../utils/helpers";
 import Materialize from "materialize-css";
 import moment from "moment";
 
 const Form = () => {
+  const [state, dispatch] = useStoreContext();
+
+  //const { control, screenings } = state;
+
   const [formState, setFormState] = useState({
     control: "",
     symptoms: "noSymptom",
@@ -18,10 +25,49 @@ const Form = () => {
   console.log(formState);
 
   const [addScreening] = useMutation(ADD_SCREENING);
-  const { data: controlData } = useQuery(QUERY_CONTROL);
+  const { loading, data: controlData } = useQuery(QUERY_CONTROL);
+  const { data: screeningData } = useQuery(QUERY_SCREENINGS);
   //console.log(controlData);
   //const { controls } = controlData;
   //console.log(controlData.controls);
+
+  useEffect(() => {
+    if (controlData) {
+      dispatch({
+        type: UPDATE_CONTROL,
+        control: controlData.controls,
+      });
+      controlData.controls.forEach((control) => {
+        idbPromise("control", "put", control);
+      });
+    } else if (!loading) {
+      idbPromise("control", "get").then((controls) => {
+        dispatch({
+          type: UPDATE_CONTROL,
+          control: controls,
+        });
+      });
+    }
+  }, [controlData, loading, dispatch]);
+
+  useEffect(() => {
+    if (screeningData) {
+      dispatch({
+        type: UPDATE_SCREENINGS,
+        screenings: screeningData,
+      });
+      screeningData.screenings.forEach((screening) => {
+        idbPromise("screenings", "put", screening);
+      });
+    } else if (!loading) {
+      idbPromise("screenings", "get").then((screenings) => {
+        dispatch({
+          type: UPDATE_SCREENINGS,
+          screenings: screenings,
+        });
+      });
+    }
+  }, [screeningData, loading, dispatch]);
 
   const handleScreeningSubmit = async (event) => {
     event.preventDefault();
