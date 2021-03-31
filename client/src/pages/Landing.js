@@ -15,12 +15,13 @@ const Landing = () => {
 			<div className='form-container'>
 				{loggedIn && userData ? (
 					<div>
-						<p>
+						{/* <p>
 							Welcome <span>{userData?.me?.username}</span>
 						</p>
 						<p>
 							Authorization: <span>{userData?.me?.role.toUpperCase()}</span>
-						</p>
+						</p> */}
+            <h3 className="center-align">COVID Screening Form</h3>
 						<div>
 							{userData?.me?.role === 'admin' ? (
 								<div>

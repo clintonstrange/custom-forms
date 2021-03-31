@@ -19,6 +19,11 @@
 	margin-left: 10px;
 }
 
+.form-margin {
+	width: 80%;
+	margin: auto;
+}
+
 .login-btn {
 	width: 75%;
 	margin: auto;
