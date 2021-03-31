@@ -6,12 +6,11 @@ const dateFormat = require("../utils/dateFormat");
 
 const covidScreeningSchema = new Schema(
   {
-    control: [
+    control:
       {
         type: Schema.Types.ObjectId,
         ref: "Control",
       },
-    ],
     symptoms: {
       type: String,
       required: true,
@@ -29,13 +28,23 @@ const covidScreeningSchema = new Schema(
       type: String,
       required: true,
     },
+    screenDate: {
+      type: Date,
+      required: true,
+      trim: true,
+      get: (timestamp) => dateFormat(timestamp),
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: (timestamp) => dateFormat(timestamp),
+    },
   },
   {
     toJSON: {
       virtuals: true,
       getters: true,
     },
-    id: false,
   }
 );
 

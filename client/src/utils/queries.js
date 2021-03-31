@@ -19,3 +19,20 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_CONTROL = gql`
+  {
+    controls {
+      _id
+      documentor
+      screenNum {
+        _id
+        symptoms
+        contact
+        positiveTest
+        travel
+      }
+      credentials
+    }
+  }
+`;

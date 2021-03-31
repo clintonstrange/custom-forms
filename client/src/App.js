@@ -4,6 +4,7 @@ import { StoreProvider } from "./utils/GlobalState";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
 import "materialize-css/dist/css/materialize.min.css";
+import "materialize-css/dist/js/materialize.min.js";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
