@@ -12,8 +12,6 @@ import moment from "moment";
 const Form = () => {
   const [state, dispatch] = useStoreContext();
 
-  //const { control, screenings } = state;
-
   const [formState, setFormState] = useState({
     control: "",
     symptoms: "noSymptom",
@@ -25,8 +23,12 @@ const Form = () => {
   console.log(formState);
 
   const [addScreening] = useMutation(ADD_SCREENING);
-  const { loading, data: controlData } = useQuery(QUERY_CONTROL);
-  const { data: screeningData } = useQuery(QUERY_SCREENINGS);
+  const { loading: controlLoading, data: controlData } = useQuery(
+    QUERY_CONTROL
+  );
+  const { loading: screeningLoading, data: screeningData } = useQuery(
+    QUERY_SCREENINGS
+  );
   //console.log(controlData);
   //const { controls } = controlData;
   //console.log(controlData.controls);
@@ -40,7 +42,7 @@ const Form = () => {
       controlData.controls.forEach((control) => {
         idbPromise("control", "put", control);
       });
-    } else if (!loading) {
+    } else if (!controlLoading) {
       idbPromise("control", "get").then((controls) => {
         dispatch({
           type: UPDATE_CONTROL,
@@ -48,7 +50,7 @@ const Form = () => {
         });
       });
     }
-  }, [controlData, loading, dispatch]);
+  }, [controlData, controlLoading, dispatch]);
 
   useEffect(() => {
     if (screeningData) {
@@ -59,7 +61,7 @@ const Form = () => {
       screeningData.screenings.forEach((screening) => {
         idbPromise("screenings", "put", screening);
       });
-    } else if (!loading) {
+    } else if (!screeningLoading) {
       idbPromise("screenings", "get").then((screenings) => {
         dispatch({
           type: UPDATE_SCREENINGS,
@@ -67,7 +69,7 @@ const Form = () => {
         });
       });
     }
-  }, [screeningData, loading, dispatch]);
+  }, [screeningData, screeningLoading, dispatch]);
 
   const handleScreeningSubmit = async (event) => {
     event.preventDefault();
