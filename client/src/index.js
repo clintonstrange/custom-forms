@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './serviceWorkerRegistration';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -13,7 +13,7 @@ ReactDOM.render(
 
 // if ('serviceWorker' in navigator) {
 // 	navigator.serviceWorker
-// 		.register('/serviceWorker.js')
+// 		.register('/service-worker.js')
 // 		.then(serviceWorker => {
 // 			console.log('Service Worker registered: ', serviceWorker);
 // 		})
