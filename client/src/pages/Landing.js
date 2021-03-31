@@ -14,17 +14,17 @@ const Landing = () => {
       {loggedIn && userData ? (
         <div>
           <p>
-            Welcome <span>{userData.me.username}</span>
+            Welcome <span>{userData?.me?.username}</span>
           </p>
           <p>
-            Authorization: <span>{userData.me.role.toUpperCase()}</span>
+            Authorization: <span>{userData?.me?.role.toUpperCase()}</span>
           </p>
           <div>
-            {userData.me.role === "admin" ? (
+            {userData?.me?.role === "admin" ? (
               <div>
                 <Form />
               </div>
-            ) : userData.me.role === "read/write" ? (
+            ) : userData?.me?.role === "read/write" ? (
               <div>
                 <Form />
               </div>
