@@ -1,14 +1,13 @@
-import React from 'react';
-import Auth from '../utils/auth';
-import { useQuery } from '@apollo/react-hooks';
-import { QUERY_ME } from '../utils/queries';
-import Form from '../components/Form';
+import React from "react";
+import Auth from "../utils/auth";
+import { useQuery } from "@apollo/react-hooks";
+import { QUERY_ME } from "../utils/queries";
+import Form from "../components/Form";
 import Footer from '../components/Footer';
-// import { idbPromise } from "../utils/helpers"
 
 const Landing = () => {
-	const loggedIn = Auth.loggedIn();
-	const { data: userData } = useQuery(QUERY_ME);
+  const loggedIn = Auth.loggedIn();
+  const { data: userData } = useQuery(QUERY_ME);
 
 	return (
 		<div>

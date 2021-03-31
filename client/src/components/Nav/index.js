@@ -9,7 +9,6 @@ function Nav() {
   const { data: userData } = useQuery(QUERY_ME);
   //console.log(userData);
 
-
   return (
     <div>
       {loggedIn && userData ? (
@@ -23,8 +22,10 @@ function Nav() {
                 Logout
               </a>
             </li>
-            <li className="margin-right">DATA RENDERING LINK HERE</li>
-            {userData?.me?.role === "admin" ? (
+            <li>
+              <Link to="/viewdata">View Data</Link>
+            </li>
+            {userData.me.role === "admin" ? (
               <li className="mx-1">
                 <a href="/signup">Create Account</a>
               </li>
