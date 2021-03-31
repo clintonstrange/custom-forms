@@ -36,7 +36,7 @@ db.once("open", async () => {
 
   console.log(" ========= CONTROL SEEDED ========= ");
 
-  // await Screenings.deleteMany();
+  //await Screenings.deleteMany();
 
   //   await Screenings.create({
   //     control: 1234567890,
