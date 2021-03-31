@@ -13,7 +13,7 @@ export const reducer = (state, action) => {
     case UPDATE_SCREENINGS:
       return {
         ...state,
-        screenings: [...action.screenings],
+        screenings: [...action.screenings.screenings],
       };
     // if it's none of these actions, do not update state at all and keep things the same!
     default:
