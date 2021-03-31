@@ -1,4 +1,8 @@
 /* custom css for desktops */
+.body-display {
+	padding-top: 20px;
+	padding-bottom: 60px;
+}
 
 /* customize the card for the login screen */
 #card-custom {
@@ -24,12 +28,30 @@
 	border-radius: 30px !important;
 }
 
-.container{
-    width: 100%;
+.container {
+	width: 100%;
 }
 
-.spacer{
-    margin-top: 10px;
+.spacer {
+	margin-top: 10px;
+}
+
+/* this is style for the login input section */
+input:not([type]):focus:not([readonly]),
+input[type='text']:not(.browser-default):focus:not([readonly]),
+input[type='password']:not(.browser-default):focus:not([readonly]),
+input[type='email']:not(.browser-default):focus:not([readonly]),
+input[type='url']:not(.browser-default):focus:not([readonly]),
+input[type='time']:not(.browser-default):focus:not([readonly]),
+input[type='date']:not(.browser-default):focus:not([readonly]),
+input[type='datetime']:not(.browser-default):focus:not([readonly]),
+input[type='datetime-local']:not(.browser-default):focus:not([readonly]),
+input[type='tel']:not(.browser-default):focus:not([readonly]),
+input[type='number']:not(.browser-default):focus:not([readonly]),
+input[type='search']:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid black !important;
+	box-shadow: 0 1px 0 0 black !important;
 }
 
 /* MEDIA QUERIES */

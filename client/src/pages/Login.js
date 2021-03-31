@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
+// import Footer from '../components/Footer';
 
 function Login(props) {
   const [formState, setFormState] = useState({
@@ -56,6 +57,7 @@ function Login(props) {
           <div>
             <p className="error-text">The provided credentials are incorrect</p>
           </div>
+
         ) : null}
         <div className="flex-row center-align">
           <button
