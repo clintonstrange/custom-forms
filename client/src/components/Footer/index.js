@@ -45,6 +45,11 @@ function Footer() {
 											Contact Us
 										</a>
 									</li>
+									<li>
+										<button id='install_button' hidden>
+											Install
+										</button>
+									</li>
 								</ul>
 							</div>
 						</div>
