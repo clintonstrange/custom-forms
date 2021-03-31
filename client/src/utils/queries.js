@@ -9,7 +9,7 @@ export const QUERY_USER = gql`
   }
 `;
 
-export const QUERY_ME_BASIC = gql`
+export const QUERY_ME = gql`
   {
     me {
       _id
@@ -20,18 +20,19 @@ export const QUERY_ME_BASIC = gql`
   }
 `;
 
-export const QUERY_SCREENINGS = gql`
-{
-    screenings {
+export const QUERY_CONTROL = gql`
+  {
+    controls {
       _id
-      symptoms
-      contact
-      positiveTest
-      travel
-      # control {
-      #   documentor
-      #   credentials
-      # }
+      documentor
+      screenNum {
+        _id
+        symptoms
+        contact
+        positiveTest
+        travel
+      }
+      credentials
     }
-}
+  }
 `;

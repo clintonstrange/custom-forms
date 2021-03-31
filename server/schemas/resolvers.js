@@ -23,7 +23,16 @@ const resolvers = {
       return User.findOne({ username }).select("-__v -password");
     },
     screenings: async () => {
-      return await Screenings.find();
+      return await Screenings.find().populate("control");
+    },
+    screening: async (parent, { _id }) => {
+      return await Screenings.findOne({ _id });
+    },
+    controls: async () => {
+      return await Control.find().populate("screenNum");
+    },
+    control: async (parent, { _id }) => {
+      return await Control.findOne({ _id });
     },
   },
 
@@ -50,28 +59,45 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    submitForm: async (parent, args, context) => {
-      if (context.user) {
-        const form = await Screening.create({
-          ...args,
-          username: context.user.username,
-        });
-
-        await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { screenings: form._id } },
-          { new: true }
-        );
-        return form;
-      }
-
-      throw new AuthenticationError("You need to be logged in!");
-    },
     addScreening: async (parent, args) => {
-      const screenings = await Screenings.create(args);
-      return screenings;
+      const controlData = await Control.findById({ _id: args.control });
+      console.log("======= CONTROL =======" + controlData);
+
+      const screenings = await Screenings.create({
+        ...args,
+        control: args.control,
+        symptons: args.symptons,
+        contact: args.contact,
+        positiveTest: args.positiveTest,
+        travel: args.travel,
+        screenDate: args.screenDate,
+      });
+
+      console.log("=====SCREENINGS=======" + screenings);
+
+      const updatedScreening = await Screenings.findById({
+        _id: screenings._id,
+      }).populate("control");
+
+      console.log("===== UPDATED SCREENING =======" + updatedScreening);
+
+      const updateControl = await Control.findByIdAndUpdate(
+        { _id: args.control },
+        { $push: { screenNum: screenings._id } },
+        { new: true }
+      ).populate("screenNum");
+      console.log("====== UPDATED CONTROL ======" + updateControl);
+
+      return updatedScreening;
+    },
+    addControl: async (parent, args) => {
+      const control = await Control.create(args);
+      return control;
     },
     // TODO: build out a 'viewData' mutation when the time is right
+    removeScreening: async (parent, args) => {
+      await Screenings.findByIdAndDelete({ _id: args._id });
+    },
   },
 };
 

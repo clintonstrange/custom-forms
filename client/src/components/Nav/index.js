@@ -2,11 +2,12 @@ import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
-import { QUERY_ME_BASIC } from "../../utils/queries";
+import { QUERY_ME } from "../../utils/queries";
 
 function Nav() {
   const loggedIn = Auth.loggedIn();
-  const { data: userData } = useQuery(QUERY_ME_BASIC);
+  const { data: userData } = useQuery(QUERY_ME);
+  //console.log(userData);
 
   return (
     <div>
@@ -28,11 +29,7 @@ function Nav() {
               <li className="mx-1">
                 <a href="/signup">Create Account</a>
               </li>
-            ) : (
-              <li>
-                <p>Test</p>
-              </li>
-            )}
+            ) : null}
           </ul>
         </nav>
       ) : (
