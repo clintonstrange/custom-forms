@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/react-hooks";
-//import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_SCREENING } from "../../utils/mutations";
 import { QUERY_CONTROL } from "../../utils/queries";
-//import { UPDATE_CONTROL, UPDATE_SCREENINGS } from "../../utils/actions";
 import { DatePicker } from "react-materialize";
-// import { idbPromise } from "../../utils/helpers";
 import Materialize from "materialize-css";
 import moment from "moment";
 
 const Form = () => {
-  //const [state, dispatch] = useStoreContext();
-
   const [formState, setFormState] = useState({
     control: "",
     symptoms: "noSymptom",
@@ -20,56 +15,9 @@ const Form = () => {
     travel: "no",
     screenDate: "",
   });
-  console.log(formState);
 
   const [addScreening] = useMutation(ADD_SCREENING);
   const { data: controlData } = useQuery(QUERY_CONTROL);
-  // const { loading: screeningLoading, data: screeningData } = useQuery(
-  //   QUERY_SCREENINGS
-  // );
-  // //console.log(controlData);
-  // //const { controls } = controlData;
-  // //console.log(controlData.controls);
-
-  // useEffect(() => {
-  //   if (controlData) {
-  //     dispatch({
-  //       type: UPDATE_CONTROL,
-  //       control: controlData.controls,
-  //     });
-  //     controlData.controls.forEach((control) => {
-  //       idbPromise("control", "put", control);
-  //     });
-  //   } else if (!controlLoading) {
-  //     idbPromise("control", "get").then((controls) => {
-  //       dispatch({
-  //         type: UPDATE_CONTROL,
-  //         control: controls,
-  //       });
-  //     });
-  //   }
-  // }, [controlData, controlLoading, dispatch]);
-
-  // useEffect(() => {
-  //   if (screeningData) {
-  //     dispatch({
-  //       type: UPDATE_SCREENINGS,
-  //       screenings: screeningData,
-  //     });
-  //     screeningData.screenings.forEach((screening) => {
-  //       idbPromise("screenings", "put", screening);
-  //     });
-  //   } else if (!screeningLoading) {
-  //     idbPromise("screenings", "get").then((screenings) => {
-  //       dispatch({
-  //         type: UPDATE_SCREENINGS,
-  //         screenings: screenings,
-  //       });
-  //     });
-  //   }
-  // }, [screeningData, screeningLoading, dispatch]);
-
-  // console.log(state);
 
   const handleScreeningSubmit = async (event) => {
     event.preventDefault();
@@ -84,6 +32,15 @@ const Form = () => {
           screenDate: formState.screenDate,
         },
       });
+      await setFormState({
+        control: "",
+        symptoms: "noSymptom",
+        contact: "no",
+        positiveTest: "no",
+        travel: "no",
+        screenDate: "",
+      });
+      event.target.reset();
     } catch (e) {
       console.log(e);
     }
@@ -112,9 +69,8 @@ const Form = () => {
 
   return (
     <div>
-      <form onSubmit={handleScreeningSubmit}>
+      <form id="form" onSubmit={handleScreeningSubmit}>
         <div className="form-margin">
-          {/* screening date section */}
           <div>
             <DatePicker
               label="Screening Date"
@@ -134,7 +90,6 @@ const Form = () => {
               }}
             />
           </div>
-          {/* selecting the control */}
           <div>
             <label htmlFor="control">
               Please select Control for this Screen.
@@ -163,7 +118,6 @@ const Form = () => {
               )}
             </select>
           </div>
-          {/* symptoms */}
           <div>
             <label htmlFor="symptoms">
               Do you have any of the following symptoms?
@@ -183,7 +137,6 @@ const Form = () => {
               <option value="fever">Fever</option>
             </select>
           </div>
-          {/* have you been in contact */}
           <div>
             <label htmlFor="contact">
               Have you been in contact with anyone in the last 14 days who is
@@ -200,7 +153,6 @@ const Form = () => {
               <option value="yes">Yes</option>
             </select>
           </div>
-          {/* postitive contacts */}
           <div>
             <label htmlFor="positiveTest">
               Have you been in contact with anyone who has since tested positive
@@ -218,7 +170,6 @@ const Form = () => {
               <option value="unsure">Unsure</option>
             </select>
           </div>
-          {/* traveled */}
           <div>
             <label htmlFor="travel">
               Have you traveled abroad in the last 1-2 months?
