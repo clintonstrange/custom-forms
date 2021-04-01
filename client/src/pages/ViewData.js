@@ -9,18 +9,15 @@ import { idbPromise } from "../utils/helpers";
 function ViewData() {
   const [state, dispatch] = useStoreContext();
   const loggedIn = Auth.loggedIn();
-  const { loading, error, data } = useQuery(QUERY_SCREENINGS); //QUERY_ME needs to include forms, QUERY_ME_BASIC will have just standard info
+  //const { loading, error, data } = useQuery(QUERY_SCREENINGS);
   // const controlId = data.screenings.map((screening) => screening.control.map((controls) => controls._id));
 
   const { loading: controlLoading, data: controlData } = useQuery(
     QUERY_CONTROL
   );
-  const { loading: screeningLoading, data: screeningData } = useQuery(
+  const { loading: screeningLoading, error, data: screeningData } = useQuery(
     QUERY_SCREENINGS
   );
-  //console.log(controlData);
-  //const { controls } = controlData;
-  //console.log(controlData.controls);
 
   useEffect(() => {
     if (controlData) {
@@ -63,10 +60,10 @@ function ViewData() {
   console.log(state);
 
   // console.log(controlId);
-  if (!data) {
+  if (!screeningData) {
     return <div>No forms have been filled out.</div>;
   }
-  if (loading) {
+  if (screeningLoading) {
     return <div>Loading...</div>;
   }
 
@@ -81,7 +78,7 @@ function ViewData() {
         <div>
           <h2>Here are the different forms you've completed:</h2>
           <div className="row">
-            {data.screenings.map((info, index) => (
+            {screeningData.screenings.map((info, index) => (
               <div className="col s12 m4" key={index}>
                 <div className="card blue-grey darken-1" key={info._id}>
                   <div className="card-content white-text">
