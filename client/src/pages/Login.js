@@ -38,7 +38,7 @@ function Login(props) {
 
 	return (
 		<>
-			<div className='fit'>
+			<div className='fit login-parent'>
 				<div className='my-1'>
 					<div id='card-custom'>
 						<h5 className='center align'>Welcome to whatever works!</h5>

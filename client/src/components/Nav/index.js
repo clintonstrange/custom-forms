@@ -20,6 +20,7 @@ function Nav() {
 			<div>
 				{loggedIn && userData ? (
 					<>
+						{/* this is the regular nav menu when the user is logged in and on a desktop */}
 						<nav className='nav-wrapper blue darken-1'>
 							<a href='/' className='brand-logo left margin-left'>
 								Whatever Works 2.0
@@ -48,11 +49,15 @@ function Nav() {
 							</ul>
 						</nav>
 
+						{/* this is the login element for the sidenav when the menu is hidden on a smaller screen AND the user is logged in */}
 						<ul className='sidenav' id='mobile-demo'>
 							<li className='mx-1 sidenav-close'>
 								<a href='/' onClick={() => Auth.logout()}>
 									Logout
 								</a>
+							</li>
+							<li className='sidenav-close'>
+								<Link to='/'>Home</Link>
 							</li>
 							<li className='sidenav-close'>
 								<Link to='/landing'>Forms</Link>
@@ -69,6 +74,7 @@ function Nav() {
 					</>
 				) : (
 					<>
+						{/* this is the regular nav menu on a desktop */}
 						<nav className='nav-wrapper blue darken-1'>
 							<a href='/' className='brand-logo left margin-left'>
 								Whatever Works 2.0
@@ -87,6 +93,7 @@ function Nav() {
 							</ul>
 						</nav>
 
+						{/* this is the login element for the sidenav when the menu is hidden on a smaller screen AND the user is not logged in */}
 						<ul className='sidenav' id='mobile-demo'>
 							<li className='mx-1 sidenav-close'>
 								<Link to='/login'>Login</Link>
