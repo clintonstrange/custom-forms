@@ -11,7 +11,9 @@ function Footer() {
 
 	return (
 		<>
+		
 			{loggedIn && userData ? (
+				// if the user is logged in and there is userdata, then return this footer element
 				<footer className='page-footer blue darken-1 footer-test'>
 					<div className='container'>
 						<div className='row'>
@@ -59,6 +61,7 @@ function Footer() {
 					</div>
 				</footer>
 			) : (
+				// if the user is not logged in, then return this footer element
 				<footer className='page-footer blue darken-1 footer-test'>
 					<div className='container'>
 						<div className='row'>

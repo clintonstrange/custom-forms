@@ -91,7 +91,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 	box-shadow: 0 1px 0 0 black !important;
 }
 
-/* added this to anchor the footer at the bottom of the login page */
+/* added this to anchor the footer at the bottom of the page */
 .footer-test {
 	@media (max-width: 380px) {
 		margin-top: 20px;
