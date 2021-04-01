@@ -265,6 +265,30 @@ db.once("open", async () => {
     travel: "no",
     screenDate: "March 1, 2021",
   });
+  await Screenings.create({
+    control: "6063bf26595bdfd2515b8c72",
+    symptoms: "noSymptom",
+    contact: "no",
+    positiveTest: "no",
+    travel: "no",
+    screenDate: "March 1, 2021",
+  });
+  await Screenings.create({
+    control: "6063bf26595bdfd2515b8c72",
+    symptoms: "noSymptom",
+    contact: "no",
+    positiveTest: "no",
+    travel: "no",
+    screenDate: "March 1, 2021",
+  });
+  await Screenings.create({
+    control: "6063bf26595bdfd2515b8c72",
+    symptoms: "noSymptom",
+    contact: "no",
+    positiveTest: "no",
+    travel: "no",
+    screenDate: "March 1, 2021",
+  });
 
   //   console.log(" ========= screenings seeded ========= ");
   await User.deleteMany();
