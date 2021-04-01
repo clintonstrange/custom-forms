@@ -6,7 +6,7 @@ import { QUERY_ME } from '../../utils/queries';
 import Materialize from 'materialize-css/dist/js/materialize.min.js';
 
 document.addEventListener('DOMContentLoaded', function () {
-	var elems = document.querySelectorAll('.sidenav');
+	let elems = document.querySelectorAll('.sidenav');
 	Materialize.Sidenav.init(elems, {});
 });
 
@@ -32,12 +32,12 @@ function Nav() {
 								<i className='material-icons'>menu</i>
 							</a>
 							<ul className='flex-row right hide-on-med-and-down'>
-								<li className='mx-1'>
+								<li className='mx-1 sidenav-close'>
 									<a href='/' onClick={() => Auth.logout()}>
 										Logout
 									</a>
 								</li>
-								<li>
+								<li className='sidenav-close'>
 									<Link to='/viewdata'>View Data</Link>
 								</li>
 								{userData?.me?.role === 'admin' ? (
@@ -49,19 +49,19 @@ function Nav() {
 						</nav>
 
 						<ul className='sidenav' id='mobile-demo'>
-							<li className='mx-1'>
+							<li className='mx-1 sidenav-close'>
 								<a href='/' onClick={() => Auth.logout()}>
 									Logout
 								</a>
 							</li>
-              <li>
-									<Link to='/landing'>Forms</Link>
-								</li>
-							<li>
+							<li className='sidenav-close'>
+								<Link to='/landing'>Forms</Link>
+							</li>
+							<li className='sidenav-close'>
 								<Link to='/viewdata'>View Data</Link>
 							</li>
 							{userData?.me?.role === 'admin' ? (
-								<li className='mx-1'>
+								<li className='mx-1 sidenav-close'>
 									<a href='/signup'>Create Account</a>
 								</li>
 							) : null}
@@ -81,14 +81,14 @@ function Nav() {
 								<i className='material-icons'>menu</i>
 							</a>
 							<ul className='flex-row right hide-on-med-and-down'>
-								<li className='mx-1'>
+								<li className='mx-1 sidenav-close'>
 									<Link to='/login'>Login</Link>
 								</li>
 							</ul>
 						</nav>
 
 						<ul className='sidenav' id='mobile-demo'>
-							<li className='mx-1'>
+							<li className='mx-1 sidenav-close'>
 								<Link to='/login'>Login</Link>
 							</li>
 						</ul>
