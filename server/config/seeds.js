@@ -1,41 +1,41 @@
 const db = require("./connection");
 const { User, Screenings, Control } = require("../models");
 db.once("open", async () => {
-//   await Control.deleteMany();
-  
-//   await Control.create({
-//     documentor: "Perry Cox",
-//     screenNum: [],
-//     credentials: "MD",
-//   });
+  //   await Control.deleteMany();
 
-//   await Control.create({
-//     documentor: "Carla Turk",
-//     screenNum: [],
-//     credentials: "RN",
-//   });
+  //   await Control.create({
+  //     documentor: "Perry Cox",
+  //     screenNum: [],
+  //     credentials: "MD",
+  //   });
 
-//   await Control.create({
-//     documentor: "John Dorian",
-//     screenNum: [],
-//     credentials: "Paramedic",
-//   });
+  //   await Control.create({
+  //     documentor: "Carla Turk",
+  //     screenNum: [],
+  //     credentials: "RN",
+  //   });
 
-//   await Control.create({
-//     documentor: "Chris Turk",
-//     screenNum: [],
-//     credentials: "EMT",
-//   });
+  //   await Control.create({
+  //     documentor: "John Dorian",
+  //     screenNum: [],
+  //     credentials: "Paramedic",
+  //   });
 
-//   await Control.create({
-//     documentor: "Glen Matthews",
-//     screenNum: [],
-//     credentials: "Civilian",
-//   });
+  //   await Control.create({
+  //     documentor: "Chris Turk",
+  //     screenNum: [],
+  //     credentials: "EMT",
+  //   });
+
+  //   await Control.create({
+  //     documentor: "Glen Matthews",
+  //     screenNum: [],
+  //     credentials: "Civilian",
+  //   });
 
   console.log(" ========= CONTROL SEEDED ========= ");
   // await Screenings.deleteMany();
-  
+
   // await Screenings.create({
   //   control: "6063c897dd32db9339298553",
   //   symptoms: "noSymptom",
