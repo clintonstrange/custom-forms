@@ -30,7 +30,7 @@ const covidScreeningSchema = new Schema(
     },
     screenDate: {
       type: Date,
-      required: true,
+      required: false,
       trim: true,
       get: (timestamp) => dateFormat(timestamp),
     },
