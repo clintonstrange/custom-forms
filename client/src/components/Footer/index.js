@@ -36,7 +36,7 @@ function Footer() {
 										</a>
 									</li>
 									<li>
-										<a className='grey-text text-lighten-3' href='#!'>
+										<a className='grey-text text-lighten-3' href='/viewData'>
 											View Data
 										</a>
 									</li>

@@ -25,7 +25,7 @@ function Nav() {
             <li>
               <Link to="/viewdata">View Data</Link>
             </li>
-            {userData.me.role === "admin" ? (
+            {userData?.me?.role === "admin" ? (
               <li className="mx-1">
                 <a href="/signup">Create Account</a>
               </li>
