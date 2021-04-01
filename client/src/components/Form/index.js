@@ -72,6 +72,7 @@ const Form = () => {
   }, [screeningData, screeningLoading, dispatch]);
 
   console.log(state);
+  
   const handleScreeningSubmit = async (event) => {
     event.preventDefault();
     try {
