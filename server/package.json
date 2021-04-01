@@ -1,26 +1,30 @@
 {
-  "name": "custom-forms",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "watch": "nodemon",
-    "seed": "node config/seeds.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "apollo-server-express": "^2.12.0",
-    "bcrypt": "^4.0.1",
-    "express": "^4.17.1",
-    "faker": "^4.1.0",
-    "graphql": "^15.5.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.9"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.3"
-  }
+	"name": "custom-forms",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js",
+		"watch": "nodemon",
+		"seed": "node config/seeds.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"apollo-server-express": "^2.22.2",
+		"bcrypt": "^5.0.1",
+		"compression": "^1.7.4",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"faker": "^4.1.0",
+		"graphql": "^15.5.0",
+		"jsonwebtoken": "^8.5.1",
+		"mongodb": "^3.6.5",
+		"mongoose": "^5.12.3"
+	},
+	"devDependencies": {
+		"dotenv": "^8.2.0",
+		"nodemon": "^2.0.7"
+	}
 }
