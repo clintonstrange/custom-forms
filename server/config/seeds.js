@@ -1,34 +1,41 @@
 const db = require("./connection");
 const { User, Screenings, Control } = require("../models");
 db.once("open", async () => {
-  // await Control.deleteMany();
-  // await Control.create({
-  //   documentor: "Perry Cox",
-  //   screenNum: [],
-  //   credentials: "MD",
-  // });
-  // await Control.create({
-  //   documentor: "Carla Turk",
-  //   screenNum: [],
-  //   credentials: "RN",
-  // });
-  // await Control.create({
-  //   documentor: "John Dorian",
-  //   screenNum: [],
-  //   credentials: "Paramedic",
-  // });
-  // await Control.create({
-  //   documentor: "Chris Turk",
-  //   screenNum: [],
-  //   credentials: "EMT",
-  // });
-  // await Control.create({
-  //   documentor: "Glen Matthews",
-  //   screenNum: [],
-  //   credentials: "Civilian",
-  // });
+//   await Control.deleteMany();
+  
+//   await Control.create({
+//     documentor: "Perry Cox",
+//     screenNum: [],
+//     credentials: "MD",
+//   });
+
+//   await Control.create({
+//     documentor: "Carla Turk",
+//     screenNum: [],
+//     credentials: "RN",
+//   });
+
+//   await Control.create({
+//     documentor: "John Dorian",
+//     screenNum: [],
+//     credentials: "Paramedic",
+//   });
+
+//   await Control.create({
+//     documentor: "Chris Turk",
+//     screenNum: [],
+//     credentials: "EMT",
+//   });
+
+//   await Control.create({
+//     documentor: "Glen Matthews",
+//     screenNum: [],
+//     credentials: "Civilian",
+//   });
+
   console.log(" ========= CONTROL SEEDED ========= ");
   // await Screenings.deleteMany();
+  
   // await Screenings.create({
   //   control: "6063c897dd32db9339298553",
   //   symptoms: "noSymptom",
@@ -245,6 +252,20 @@ db.once("open", async () => {
   //   travel: "no",
   //   screenDate: "March 4, 2021",
   // });
+
+  console.log(" ========= CONTROL SEEDED ========= ");
+
+  await Screenings.deleteMany();
+
+  await Screenings.create({
+    control: "6063bf26595bdfd2515b8c72",
+    symptoms: "noSymptom",
+    contact: "no",
+    positiveTest: "no",
+    travel: "no",
+    screenDate: "March 1, 2021",
+  });
+
   //   console.log(" ========= screenings seeded ========= ");
   await User.deleteMany();
   await User.create({
