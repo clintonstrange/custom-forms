@@ -29,22 +29,22 @@ export const QUERY_CONTROL = gql`
     }
   }
 `;
- 
+
 export const QUERY_SCREENINGS = gql`
-{
-  screenings {
-    _id
-    control {
+  {
+    screenings {
       _id
-      documentor
-      credentials
+      control {
+        _id
+        documentor
+        credentials
+      }
+      symptoms
+      contact
+      positiveTest
+      travel
+      screenDate
+      createdAt
     }
-    symptoms
-    contact
-    positiveTest
-    travel
-    screenDate
-    createdAt
   }
-}
 `;

@@ -5,7 +5,10 @@ const StoreContext = createContext();
 const { Provider } = StoreContext;
 
 const StoreProvider = ({ value = [], ...props }) => {
-  const [state, dispatch] = useProductReducer({});
+  const [state, dispatch] = useProductReducer({
+    control: [],
+    screenings: [],
+  });
   // use this to confirm it works!
   //console.log(state);
   return <Provider value={[state, dispatch]} {...props} />;

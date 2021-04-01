@@ -1,45 +1,95 @@
-import React, { useState } from 'react';
-import { useMutation, useQuery } from '@apollo/react-hooks';
-import { ADD_SCREENING } from '../../utils/mutations';
-import { QUERY_CONTROL } from '../../utils/queries';
-import { DatePicker } from 'react-materialize';
-import Materialize from 'materialize-css';
-import moment from 'moment';
+import React, { useState, useEffect } from "react";
+import { useMutation, useQuery } from "@apollo/react-hooks";
+import { useStoreContext } from "../../utils/GlobalState";
+import { ADD_SCREENING } from "../../utils/mutations";
+import { QUERY_CONTROL, QUERY_SCREENINGS } from "../../utils/queries";
+import { UPDATE_CONTROL, UPDATE_SCREENINGS } from "../../utils/actions";
+import { DatePicker } from "react-materialize";
+import { idbPromise } from "../../utils/helpers";
+import Materialize from "materialize-css";
+import moment from "moment";
 
 const Form = () => {
-	const [formState, setFormState] = useState({
-		control: '',
-		symptoms: 'noSymptom',
-		contact: 'no',
-		positiveTest: 'no',
-		travel: 'no',
-		screenDate: ''
-	});
-	console.log(formState);
+  const [state, dispatch] = useStoreContext();
 
-	const [addScreening] = useMutation(ADD_SCREENING);
-	const { data: controlData } = useQuery(QUERY_CONTROL);
-	//console.log(controlData);
-	//const { controls } = controlData;
-	//console.log(controlData.controls);
+  const [formState, setFormState] = useState({
+    control: "",
+    symptoms: "noSymptom",
+    contact: "no",
+    positiveTest: "no",
+    travel: "no",
+    screenDate: "",
+  });
+  console.log(formState);
 
-	const handleScreeningSubmit = async event => {
-		event.preventDefault();
-		try {
-			await addScreening({
-				variables: {
-					control: formState.control,
-					symptoms: formState.symptoms,
-					contact: formState.contact,
-					positiveTest: formState.positiveTest,
-					travel: formState.travel,
-					screenDate: formState.screenDate
-				}
-			});
-		} catch (e) {
-			console.log(e);
-		}
-	};
+  const [addScreening] = useMutation(ADD_SCREENING);
+  const { loading: controlLoading, data: controlData } = useQuery(
+    QUERY_CONTROL
+  );
+  const { loading: screeningLoading, data: screeningData } = useQuery(
+    QUERY_SCREENINGS
+  );
+  //console.log(controlData);
+  //const { controls } = controlData;
+  //console.log(controlData.controls);
+
+  useEffect(() => {
+    if (controlData) {
+      dispatch({
+        type: UPDATE_CONTROL,
+        control: controlData.controls,
+      });
+      controlData.controls.forEach((control) => {
+        idbPromise("control", "put", control);
+      });
+    } else if (!controlLoading) {
+      idbPromise("control", "get").then((controls) => {
+        dispatch({
+          type: UPDATE_CONTROL,
+          control: controls,
+        });
+      });
+    }
+  }, [controlData, controlLoading, dispatch]);
+
+  useEffect(() => {
+    if (screeningData) {
+      dispatch({
+        type: UPDATE_SCREENINGS,
+        screenings: screeningData,
+      });
+      screeningData.screenings.forEach((screening) => {
+        idbPromise("screenings", "put", screening);
+      });
+    } else if (!screeningLoading) {
+      idbPromise("screenings", "get").then((screenings) => {
+        dispatch({
+          type: UPDATE_SCREENINGS,
+          screenings: screenings,
+        });
+      });
+    }
+  }, [screeningData, screeningLoading, dispatch]);
+
+  console.log(state);
+  
+  const handleScreeningSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await addScreening({
+        variables: {
+          control: formState.control,
+          symptoms: formState.symptoms,
+          contact: formState.contact,
+          positiveTest: formState.positiveTest,
+          travel: formState.travel,
+          screenDate: formState.screenDate,
+        },
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
 	const handleChange = event => {
 		const { name, value } = event.target;
