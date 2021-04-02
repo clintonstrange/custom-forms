@@ -10,7 +10,7 @@ function Footer() {
   //console.log(userData);
 
   return (
-    <div>
+    <>
       {loggedIn && userData ? (
         // if the user is logged in and there is userdata, then return this footer element
         <footer className="page-footer blue darken-1 footer-test">
@@ -98,7 +98,7 @@ function Footer() {
           </div>
         </footer>
       )}
-    </div>
+    </>
   );
 }
 
