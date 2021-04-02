@@ -39,7 +39,7 @@ function Signup(props) {
 		<>
 			<div className='fit login-parent'>
 				<div className='container my-1'>
-					<div id='card-custom'>
+					<div id='card-custom-signup'>
 						<h2 className='center-align'>Create Account</h2>
 						<form onSubmit={handleFormSubmit}>
 							<div className='flex-row space-between my-2'>
