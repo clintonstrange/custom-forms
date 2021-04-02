@@ -39,51 +39,53 @@ function Signup(props) {
 		<>
 			<div className='fit login-parent'>
 				<div className='container my-1'>
-					<h2 className='center-align'>Create Account</h2>
-					<form onSubmit={handleFormSubmit}>
-						<div className='flex-row space-between my-2'>
-							<label htmlFor='email'>Email:</label>
-							<input
-								placeholder='youremail@test.com'
-								name='email'
-								type='email'
-								id='email'
-								onChange={handleChange}
-							/>
-						</div>
-						<div>
-							<label htmlFor='role'>Select User Authorizaion</label>
-							<select
-								className='browser-default'
-								name='role'
-								type='role'
-								id='role'
-								onChange={handleChange}
-							>
-								<option value='admin'>Admin</option>
-								<option value='read/write'>Read/Write</option>
-								<option value='readOnly'>Read Only</option>
-							</select>
-						</div>
-						<div className='flex-row space-between my-2'>
-							<label htmlFor='pwd'>Password:</label>
-							<input
-								placeholder='******'
-								name='password'
-								type='password'
-								id='pwd'
-								onChange={handleChange}
-							/>
-						</div>
-						<div className='flex-row flex-end center-align padding-top'>
-							<button
-								type='submit'
-								className='waves-effect waves-light btn blue darken-1'
-							>
-								Submit
-							</button>
-						</div>
-					</form>
+					<div className='custom-card'>
+						<h2 className='center-align'>Create Account</h2>
+						<form onSubmit={handleFormSubmit}>
+							<div className='flex-row space-between my-2'>
+								<label htmlFor='email'>Email:</label>
+								<input
+									placeholder='youremail@test.com'
+									name='email'
+									type='email'
+									id='email'
+									onChange={handleChange}
+								/>
+							</div>
+							<div>
+								<label htmlFor='role'>Select User Authorizaion</label>
+								<select
+									className='browser-default'
+									name='role'
+									type='role'
+									id='role'
+									onChange={handleChange}
+								>
+									<option value='admin'>Admin</option>
+									<option value='read/write'>Read/Write</option>
+									<option value='readOnly'>Read Only</option>
+								</select>
+							</div>
+							<div className='flex-row space-between my-2'>
+								<label htmlFor='pwd'>Password:</label>
+								<input
+									placeholder='******'
+									name='password'
+									type='password'
+									id='pwd'
+									onChange={handleChange}
+								/>
+							</div>
+							<div className='flex-row flex-end center-align padding-top'>
+								<button
+									type='submit'
+									className='waves-effect waves-light btn blue darken-1'
+								>
+									Submit
+								</button>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</>

@@ -41,7 +41,7 @@ function Login(props) {
 			<div className='fit login-parent'>
 				<div className='my-1'>
 					<div id='card-custom'>
-						<h5 className='center align'>Welcome to whatever works!</h5>
+						<h5 className='center-align'>Welcome to whatever works!</h5>
 						<form onSubmit={handleFormSubmit}>
 							<div className='flex-row space-between my-2'>
 								<label htmlFor='email'>Email address:</label>
