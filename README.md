@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# Custom Forms
+<a href=./LICENSE>![License](https://img.shields.io/badge/License%3A-MIT-green.svg)</a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About the App
 
-## Available Scripts
+### Current
+This application is a full-stack, mobile-friendly, online/offline, MERN applicaiton allowing clients the ability to:
+- rapidly collect data elements
+- swiftly build new reporting capabilities
+- quickly optimize end user workflow
 
-In the project directory, you can run:
+Features of this PWA include, but are not limited to:
+- User authentication with various permission levels
+- Efficient form rendering
+- Scalable DB architecture
+- User intiutive UI
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Custom Forms](client\src\assets\images\COVIDscreeningformipad.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Roadmap
+- End user custom form configurability
+- Easy of use API integrations; ex. Google Address verification
+- Data visualization enhancement
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Table of Contents
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Custom Forms](#custom-forms)
+  - [About the App](#about-the-app)
+    - [Current](#Current)
+    - [Roadmap](#Roadmap)
+  - [Table of Contents](#table-of-contents)
+  - [Technology Used](#technology-used)
+  - [How to Use](#how-to-use)
+    - [Overview](#overview)
+    - [Installation](#installation)
+  - [Contributing](#contributing)
+  - [Links](#links)
+  - [License](#license)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Technology Used
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)  
+![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)  
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)  
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)   
+![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)  
+![GraphQL](https://img.shields.io/badge/GraphQL-E4405F?style=for-the-badge)  
+![Apollo](https://img.shields.io/badge/Apollo_Server-8B89CC?style=for-the-badge)  
+![Mongoose.js](https://img.shields.io/badge/Mongoose.js-880000?style=for-the-badge&logoColor=white)  
+![MongoDB Atlas](https://img.shields.io/badge/MongoDB%20Atlas-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)  
+![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## How to Use
+### Overview
+Our application utilizes service workers, so when you navigate to the production site you will be presented with an option in your browser to install Whatever Works 2.0. The application can be used in an on or offline state, either via the web browser or locally installed package.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Installation
+If you would like to download the reporsitory and modify our app, please follow the steps below:
+1. clone the repository to your local machine and run the file in your text editor
+2. before you get started on modifying the code, run 'npm install' to make sure you have all of the dependencies required run the application locally
+3. once you are ready to start testing changes, run "npm start" to launch the server - the app will then be available at your localhost
+4. if you would like to test the service workers package, use your terminal to navigate to the client file and then run "npm build
+5. if you are testing service workers, follow the terminal prompts to serve the build
+6. once the build has been served, utilize your browser dev tools to find the service workers interface
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contributing
+- [Jake Nystrom,PM](https://github.com/minnesotaNyst)
+- [Anthony Potts, Database](https://github.com/anthonypotts)
+- [Nathan Potts, Full Stack](https://github.com/nathan-potts41)
+- [Will Pearson, Design](https://github.com/willp429)
+- [Clint Strange, Full Stack](https://github.com/clintonstrange)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Links
+- **[Deployed App](https://whatever-works-2.herokuapp.com/)**
+- **[GitHub Repo](https://github.com/clintonstrange/custom-forms)**
+- **[Presentation](https://prezi.com/view/hIQmrJRV8sTyjGOSF9Fx/)**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+![License](https://img.shields.io/badge/License%3A-MIT-green.svg)    
+This app is licensed under the MIT license.
