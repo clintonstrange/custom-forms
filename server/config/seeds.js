@@ -34,7 +34,7 @@ db.once("open", async () => {
   });
 
   console.log(" ========= CONTROL SEEDED ========= ");
-  await Screenings.deleteMany();
+  //await Screenings.deleteMany();
 
   // await Screenings.deleteMany();
 
@@ -49,20 +49,18 @@ db.once("open", async () => {
 
   //   console.log(" ========= screenings seeded ========= ");
   await User.deleteMany();
+
   await User.create({
-    username: "tigerwoods",
     email: "goat@pga.com",
     password: "password12345",
     role: "admin",
   });
   await User.create({
-    username: "phil",
     email: "lefty@pga.com",
     password: "password12345",
     role: "read/write",
   });
   await User.create({
-    username: "jordan",
     email: "spieth@pga.com",
     password: "password12345",
     role: "read-only",
