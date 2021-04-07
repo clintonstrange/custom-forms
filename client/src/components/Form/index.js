@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import { ADD_SCREENING } from "../../utils/mutations";
 import { QUERY_CONTROL } from "../../utils/queries";
-import { DatePicker } from "react-materialize";
-import Materialize from "materialize-css";
-import moment from "moment";
+// import { DatePicker } from "react-materialize";
+// import Materialize from "materialize-css";
+// import moment from "moment";
 
 const Form = () => {
   const [formState, setFormState] = useState({
@@ -54,18 +54,18 @@ const Form = () => {
     });
   };
 
-  document.addEventListener("DOMContentLoaded", function () {
-    var elems = document.querySelectorAll(".datepicker");
-    Materialize.DatePicker.getInstance(elems, {
-      onSelect: function (date) {
-        console.log("onSelect: " + date);
-        setFormState({
-          ...formState,
-          screenDate: date,
-        });
-      },
-    });
-  });
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   var elems = document.querySelectorAll(".datepicker");
+  //   Materialize.DatePicker.getInstance(elems, {
+  //     onSelect: function (date) {
+  //       console.log("onSelect: " + date);
+  //       setFormState({
+  //         ...formState,
+  //         screenDate: date,
+  //       });
+  //     },
+  //   });
+  // });
 
   return (
     <div>

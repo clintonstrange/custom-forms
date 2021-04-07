@@ -1,20 +1,37 @@
 {
-	"name": "custom-forms",
-	"version": "0.1.0",
-	"private": true,
-	"main": "./server/server.js",
-	"dependencies": {
-		"cross-env": "^7.0.3"
-	},
-	"scripts": {
-		"start": "cross-env NODE_ENV=production npm run start:prod",
-		"start:prod": "cd server && npm start",
-		"start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-		"install": "cd server && npm i && npm audit fix && cd ../client && npm i --force && npm audit fix --force",
-		"seed": "cd server && npm run seed",
-		"heroku-postbuild": "cd client && npm run build"
-	},
-	"devDependencies": {
-		"concurrently": "^6.0.0"
-	}
+  "name": "custom-forms",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./server/server.js",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "tailwindcss": "^2.1.1",
+    "autoprefixer": "^10.0.4",
+    "husky": "^4.3.0",
+    "postcss": "^8.1.14",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-nesting": "^7.0.1",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0",
+    "stylelint": "^13.8.0",
+    "stylelint-config-recommended": "^3.0.0"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=production npm run start:prod",
+    "start:prod": "cd server && npm start",
+    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && npm audit fix && cd ../client && npm i --force && npm audit fix --force",
+    "seed": "cd server && npm run seed",
+    "heroku-postbuild": "cd client && npm run build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "keywords": [],
+  "devDependencies": {
+    "concurrently": "^6.0.0"
+  }
 }

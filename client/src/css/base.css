@@ -1,0 +1,153 @@
+.hide-scrollbar {
+  overflow: auto;
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-width: none; /* Firefox 64 */
+}
+.light-mode {
+  @apply bg-jujiOldLace text-black border-black;
+  --color-bg-primary: #fff9e9;
+  --color-bg-auxiliary: #eaeaea;
+  --color-text-primary: #000000;
+  --color-text-auxiliary: #151515;
+  --color-text-tertiary: #505050;
+  --color-text-quaternary: #ebe8e0;
+  --color-border-primary: #000000;
+  --color-fill-primary: #000000;
+  --color-fill-auxiliary: #151515;
+  --color-stroke-primary: #000000;
+  --accents-0: #f8f9fa;
+  --accents-1: #f1f3f5;
+  --accents-2: #e9ecef;
+  --accents-3: #dee2e6;
+  --accents-4: #ced4da;
+  --accents-5: #adb5bd;
+  --accents-6: #868e96;
+  --accents-7: #495057;
+  --accents-8: #343a40;
+  --accents-9: #212529;
+}
+
+.dark-mode {
+  @apply bg-black text-white border-white;
+  --color-bg-primary: #000000;
+  --color-bg-auxiliary: #151515;
+  --color-text-primary: #ffffff;
+  --color-text-auxiliary: #eaeaea;
+  --color-text-tertiary: #afafaf;
+  --color-text-quaternary: #000000;
+  --color-border-primary: #ffffff;
+  --color-fill-primary: #ffffff;
+  --color-fill-auxiliary: #eaeaea;
+  --color-stroke-primary: #ffffff;
+}
+
+:root {
+  --primary-0: #f1fcf7;
+  --primary-1: #168644;
+  --primary-2: #00523c;
+  --secondary-0: #fff9e9;
+  --secondary-1: #f6bd60;
+  --secondary-2: #e6a63e;
+  --accents-0: #1a1d1e;
+  --accents-1: #414442;
+  --accents-2: #7d7d7d;
+  --accents-3: #a4a4a4;
+  --accents-4: #cfcece;
+  --accents-5: #e3e3e3;
+  --accents-6: #f4f3ee;
+  --accents-7: #f4f3ee;
+  --focus-0: #cb8411;
+  --background-primary: #fff9e9;
+  --background-auxiliary: #f1f3f5;
+  @apply hide-scrollbar;
+  --text-base: #000000;
+  --text-primary: #000000;
+  --text-auxiliary: #151515;
+  --text-tertiary: #505050;
+  --text-quaternary: #ffffff;
+  --hover-0: rgba(0, 0, 0, 0.075);
+  --hover-1: rgba(0, 0, 0, 0.15);
+  --hover-2: rgba(0, 0, 0, 0.25);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  font-feature-settings: "case" 1, "rlig" 1, "calt" 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  font-family: var(--font-somaRoman);
+  text-rendering: optimizeLegibility;
+  ::--webkit-font-smoothing: antialiased;
+  ::--moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  &.hide-scrollbar {
+    overflow: auto;
+    -ms-overflow-style: none; /* IE 11 */
+    scrollbar-width: none; /* Firefox 64 */
+  }
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  margin: 0;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari and Opera https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
+}
+
+a {
+  ::-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.animated {
+  --webkit-animation-duration: 1s;
+  --animation-duration: 1s;
+  --webkit-animation-duration: 1s;
+  -animation-duration: 1s;
+  --webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
